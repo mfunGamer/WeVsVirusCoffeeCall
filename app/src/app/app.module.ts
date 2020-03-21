@@ -21,6 +21,7 @@ import {LegalNoticePageModule} from './pages/legal-notice/legal-notice.module';
 import {DataProtectionPageModule} from './pages/data-protection/data-protection.module';
 import {CreateAccountPageModule} from './pages/create-account/create-account.module';
 import {HttpClientModule} from '@angular/common/http';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,9 +50,10 @@ import {HttpClientModule} from '@angular/common/http';
   ],
 
   providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+      Geolocation,
+      StatusBar,
+      SplashScreen,
+      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })

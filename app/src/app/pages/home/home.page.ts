@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import {MenuController, Platform} from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Map, tileLayer, marker, icon } from 'leaflet';
 import { map } from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +15,25 @@ export class HomePage {
 
   constructor(public http: HttpClient,
               public plt: Platform,
-              public router: Router) {
+              public router: Router,
+              public geolocation: Geolocation,
+              private menu: MenuController
+              ) {
 
   }
 
+  ionViewDidEnter() {
+    this.menu.swipeGesture(false);
+    this.menu.close();
+  }
+
+  ionViewWillLeave() {
+    this.menu.swipeGesture(true);
+  }
+
+  onClick() {
+    this.menu.open();
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngAfterViewInit() {
@@ -31,29 +47,34 @@ export class HomePage {
 
   initMap() {
 
-    // tslint:disable-next-line:no-shadowed-variable
-    const map = new Map('map').setView([33.6396965, -84.4304574], 23);
+    this.geolocation.getCurrentPosition().then((result) => {
 
-    tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+      const mapConst = new Map('map').setView([result.coords.latitude, result.coords.longitude], 23);
 
-    const customMarkerIcon = icon({
-      iconUrl: 'assets/images/dish_02.png',
-      iconSize: [64, 64],
-      popupAnchor: [0, -20]
+      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(mapConst);
+
+      const customMarkerIcon = icon({
+        iconUrl: 'assets/images/dish_02.png',
+        iconSize: [64, 64],
+        popupAnchor: [0, -20]
+      });
+
+      const restaurants = [{id: 3, lat: 33.6396965, lng: -84.4304574}];
+
+      restaurants.forEach((restaurant) => {
+        marker([restaurant.lat, restaurant.lng], {icon: customMarkerIcon})
+            .bindPopup(`<b>${restaurant.id}</b>`, { autoClose: false })
+            .on('click', () => this.router.navigateByUrl('/restaurant'))
+            .addTo(mapConst);
+      });
+
+      setTimeout(() => { mapConst.invalidateSize(); }, 500);
+
+    }).catch((errorMessage) => {
+      console.log('An Error occured', errorMessage);
     });
-
-    const restaurants = [{id: 3, lat: 33.6396965, lng: -84.4304574}];
-
-    restaurants.forEach((restaurant) => {
-      marker([restaurant.lat, restaurant.lng], {icon: customMarkerIcon})
-          .bindPopup(`<b>${restaurant.id}</b>`, { autoClose: false })
-          .on('click', () => this.router.navigateByUrl('/restaurant'))
-          .addTo(map).openPopup();
-    });
-
-    setTimeout(() => { map.invalidateSize(); }, 500);
   }
 
 }
