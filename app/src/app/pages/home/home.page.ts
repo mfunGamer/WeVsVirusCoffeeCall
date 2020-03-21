@@ -25,6 +25,7 @@ export class HomePage {
   ionViewDidEnter() {
     this.menu.swipeGesture(false);
     this.menu.close();
+    this.initMap();
   }
 
   ionViewWillLeave() {
@@ -37,7 +38,7 @@ export class HomePage {
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngAfterViewInit() {
-    this.initMap();
+
     this.plt.ready().then(() => {
       this.http.get('https://oghuxxw1e6.execute-api.us-east-1.amazonaws.com/dev')
           .pipe(map(res => res))
@@ -56,12 +57,12 @@ export class HomePage {
       }).addTo(mapConst);
 
       const customMarkerIcon = icon({
-        iconUrl: 'assets/images/dish_02.png',
-        iconSize: [64, 64],
+        iconUrl: 'assets/images/marker.png-1.png',
+        iconSize: [30, 50],
         popupAnchor: [0, -20]
       });
 
-      const restaurants = [{id: 3, lat: 33.6396965, lng: -84.4304574}];
+      const restaurants = [{id: 3, lat: result.coords.latitude, lng: result.coords.longitude}];
 
       restaurants.forEach((restaurant) => {
         marker([restaurant.lat, restaurant.lng], {icon: customMarkerIcon})
@@ -70,7 +71,7 @@ export class HomePage {
             .addTo(mapConst);
       });
 
-      setTimeout(() => { mapConst.invalidateSize(); }, 500);
+      setTimeout(() => { mapConst.invalidateSize(); } , 500);
 
     }).catch((errorMessage) => {
       console.log('An Error occured', errorMessage);
