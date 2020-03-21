@@ -8,8 +8,7 @@ const itemHandler = require("./src/item.js");
 
 //Initializing ExpressJs
 const app = express();
-app.use(bodyParser.urlencoded());
-app.use(bodyParser.text());
+app.use(bodyParser.json());
 const port = 3000;
 
 //Company Endpoints
