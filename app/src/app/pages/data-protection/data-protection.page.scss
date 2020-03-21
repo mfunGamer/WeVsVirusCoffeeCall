@@ -1,20 +1,36 @@
-h1 {
+ion-header ion-toolbar{
+  --background: #b7e1df;
+}
 
-  color: var(--color_petrol);
-  font-size: 12px;
+ion-title {
+  color: black;
+  font-size: 20px;
+}
+
+ion-content{
+  --background: var(--color_ice_darker_2);
+
+}
+h1 {
+  color: black;
+  font-size: 14px;
+  margin: 2%;
 }
 
 h2 {
-  color: var(--color_ice);
-  font-size: 10px;
+  color: black;
+  font-size: 12px;
+  margin: 2%;
 }
 
 h3 {
-  color: var(--color_petrol);
-  font-size: 8px;
+  color: black;
+  font-size: 10px;
+  margin: 2%;
 }
 
 h4 {
-  color: var(--color_ice);
-  font-size: 8px;
+  color: black;
+  font-size: 10px;
+  margin: 2%;
 }
