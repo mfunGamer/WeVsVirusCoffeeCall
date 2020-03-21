@@ -39,7 +39,7 @@ function createCompanyHandler(req,res){
         res.send("400 Bad Request: Missing parameter " + missingParam + ".")
         return
     }
-    bd = res.body
+    bd = req.body
     db.one(`INSERT INTO company (name, email, description, reason, img_url, paypal, thank_you_msg, street, street_no, zip_code, city ) 
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id`, 
         bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city)
