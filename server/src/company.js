@@ -12,7 +12,7 @@ function getCompanyHandler(req,res){
         res.send("400 Bad Request: Missing parameter " + missingParam + ".");
         return;
     }
-    db.oneOrNone('SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg FROM company WHERE id = $1',id)
+    db.oneOrNone('SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg FROM company WHERE id = $1',req.query.id)
         .then(company => {
             res.json(company);
         });

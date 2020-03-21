@@ -7,7 +7,7 @@ function initDB(){
     //Loading Config
     dbConf = config.get('dbConfig');
     //Initializing DB
-    var db = pgp(dbConf);
+    db = pgp(dbConf);
 }
 
 function getDB() {
