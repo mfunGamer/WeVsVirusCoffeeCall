@@ -11,16 +11,25 @@
       <ion-col></ion-col>
     </ion-row>
 
-    <ion-row style="height: 20%">
+    <ion-row style="height: 10%">
       <!-- Name input -->
       <ion-col></ion-col>
       <ion-col size="10">
-      <ion-input style="text-align: center" placeholder="Gib hier bitte deinen Namen ein"></ion-input>
+
+      <ion-input style="text-align: center; background: dimgrey " placeholder="Gib hier bitte deinen Namen ein"></ion-input>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
 
-    <ion-row style="height: 20%">
+    <ion-row class="ion-align-items-end" style="height: 20%; text-align: center">
+      <ion-col></ion-col>
+      <ion-col size="10" >
+        <ion-text>Falls du nach deiner Spende ein personalisiertes Bild zum Teilen erhalten möchtest, kannst du hier ein Foto hinterlegen:</ion-text>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row style="height: 10%">
       <!-- Picture upload -->
       <ion-col></ion-col>
       <ion-col class="ion-justify-content-center" style="text-align: center">
@@ -31,13 +40,10 @@
 
     <ion-row class="ion-align-items-center" style="height: 10%">
       <!-- Data protection prompt -->
-      <ion-col>
-
-      </ion-col>
-      <ion-col>
+      <ion-col class="ion-align-items-right" style="text-align: right">
         <ion-checkbox color="primary" [(ngModel)]="datenschutz" (ionChange)="datenschutzChange()"></ion-checkbox>
       </ion-col>
-      <ion-col size="10">
+      <ion-col size="10" class="ion-justify-content-center">
         <ion-text>Ich habe die <a href="http://corndogoncorndog.com/">Datenschutzbestimmungen</a> gelesen und akzeptiere sie.</ion-text>
       </ion-col>
       <ion-col>
@@ -45,7 +51,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row style="height: 10%">
+    <ion-row style="height: 10%" class="ion-justify-content-center" style="text-align: center">
       <ion-col>
       <ion-button expand="block" fill="outline" [class.button-disabled]="!datenschutz" (click)="weiterPressed()" routerLink="/home" routerDirection="root">Weiter</ion-button>
       </ion-col>
