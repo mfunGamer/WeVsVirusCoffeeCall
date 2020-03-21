@@ -1,6 +1,6 @@
 //imports
 const utility = require("./utility.js");
-const database = reqire("./db.js");
+const database = require("./db.js");
 
 db = database.getDB();
 
