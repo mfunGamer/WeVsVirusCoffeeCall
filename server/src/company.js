@@ -76,7 +76,7 @@ function createCompanyHandler(req,res){
                 zip_code, 
                 city,
                 location) 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, ST_SetSRID(ST_Point($12, $13))::geography) 
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, ST_SetSRID(ST_Point($12, $13), 4326)::geography) 
             RETURNING id`, 
             [bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city, lat, lon])
             //Then add all items to the company
