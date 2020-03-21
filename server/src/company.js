@@ -49,7 +49,7 @@ function createCompanyHandler(req,res){
         qs: {
             street: bd.street + " " + bd.streetno,
             city: bd.city,
-            postalcode: zipcode,
+            postalcode: bd.zipcode,
             format: "json"
         },
         json: true
