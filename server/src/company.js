@@ -52,6 +52,9 @@ function createCompanyHandler(req,res){
             postalcode: bd.zipcode,
             format: "json"
         },
+        headers: {
+            "Referer":"http://137.74.140.50/"
+        },  
         json: true
     }).then((locInformation) => {
         //Need to implement error handling for empty response or timeout
