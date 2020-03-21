@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateAccountPage implements OnInit {
 
+  datenschutz = false;
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  datenschutzChange() {
+    console.log("Datenschutz Changed to " + this.datenschutz);
+  }
+
+  weiterPressed() {
+    console.log("weiterButtonPressed!");
+  }
+
 
 }

@@ -35,7 +35,7 @@
 
       </ion-col>
       <ion-col>
-        <ion-checkbox color="primary"></ion-checkbox>
+        <ion-checkbox color="primary" [(ngModel)]="datenschutz" (ionChange)="datenschutzChange()"></ion-checkbox>
       </ion-col>
       <ion-col size="8">
         <ion-text>Ich habe die <a href="http://corndogoncorndog.com/">Datenschutzbestimmungen</a> gelesen und akzeptiere sie.</ion-text>
@@ -47,7 +47,7 @@
 
     <ion-row style="height: 10%">
       <ion-col>
-      <ion-button expand="block" fill="outline">Weiter</ion-button>
+      <ion-button expand="block" fill="outline" [class.button-disabled]="!datenschutz" (click)="weiterPressed()" routerLink="/home" routerDirection="root">Weiter</ion-button>
       </ion-col>
     </ion-row>
 
