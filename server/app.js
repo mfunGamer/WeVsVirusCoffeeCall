@@ -3,11 +3,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const database = require("./src/db.js");
 const utility = require("./src/utility.js")
+const config = require("config");
+
+//Loading Config
+conf = config.get('serverConf');
 
 //Initializing ExpressJs
 const app = express();
 app.use(bodyParser.json());
-const port = 3000;
+const port = conf.port;
 
 //Initialize DB
 database.initDB();
