@@ -1,8 +1,9 @@
 import { Component} from '@angular/core';
-import { Platform } from '@ionic/angular';
+import {MenuController, Platform} from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,12 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-
+    private router: Router,
+    private menu: MenuController
   ) {
 
       this.sideMenu();
-    this.initializeApp();
+      this.initializeApp();
 
   }
 
@@ -49,4 +51,14 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+
+  isOnHomePage(): boolean {
+      const parts = this.router.url.split('/');
+      return parts[parts.length - 1] === 'home';
+  }
+
+  onHomeButton(){
+      this.menu.close();
+  }
+
 }
