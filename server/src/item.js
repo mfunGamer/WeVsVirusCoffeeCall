@@ -9,18 +9,16 @@ function getItemsHandler(req,res){
         res.send("400 Bad Request: Missing parameter " + missingParam + ".")
         return
     }
-    try {
-        db.oneOrNone(`SELECT name, icon_url, price, id FROM item WHERE id = $1`,req.query.id)
-        .then(item => {
-            res.json(item);
-        });
-    }
-    catch(e){
+    db.oneOrNone(`SELECT name, icon_url, price, id FROM item WHERE id = $1`,req.query.id)
+    .then(item => {
+        res.json(item);
+    })
+    .catch((e) => {
         console.log(e)
         res.status = 500;
         res.send("500 Internal Server Error");
         return;
-    }
+    });
 }
 
 module.exports.get = getItemsHandler;
