@@ -32,6 +32,11 @@ export class AppComponent {
       this.navigate =
           [
               {
+                  title : "Home",
+                  url   : "home",
+                  icon  : "home-outline"
+              },
+              {
                   title : "Create Account",
                   url   : "create-account",
                   icon  : "key-outline"
