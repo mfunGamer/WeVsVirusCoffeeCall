@@ -3,7 +3,7 @@ import {MenuController, Platform} from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
 
-    navigate : any;
+    navigate: any;
 
   constructor(
     private platform: Platform,
@@ -28,25 +28,25 @@ export class AppComponent {
 
   }
 
-  sideMenu(){
+  sideMenu() {
       this.navigate =
           [
               {
-                  title : "Home",
-                  url   : "home",
-                  icon  : "home-outline"
+                  title : 'Home',
+                  url   : 'home',
+                  icon  : 'home-outline'
               },
               {
-                  title : "Create Account",
-                  url   : "create-account",
-                  icon  : "key-outline"
+                  title : 'Create Account',
+                  url   : 'create-account',
+                  icon  : 'key-outline'
               },
               {
-                  title : "Settings",
-                  url   : "settings",
-                  icon  : "settings-outline"
+                  title : 'Settings',
+                  url   : 'settings',
+                  icon  : 'settings-outline'
               },
-          ]
+          ];
   }
 
 
@@ -62,7 +62,7 @@ export class AppComponent {
       return parts[parts.length - 1] === 'home';
   }
 
-  onHomeButton(){
+  onHomeButton() {
       this.menu.close();
   }
 
