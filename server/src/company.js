@@ -1,4 +1,5 @@
 //imports
+const rp = require("request-promise")
 const utility = require("./utility.js");
 const database = require("./db.js");
 
@@ -39,16 +40,50 @@ function createCompanyHandler(req,res){
         res.send("400 Bad Request: Missing parameter " + missingParam + ".")
         return
     }
-    bd = req.body
-    db.one(`INSERT INTO company (name, email, description, reason, img_url, paypal, thank_you_msg, street, street_no, zip_code, city ) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id`, 
-        [bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city])
-        .then((id) => Promise.all(
-            bd.itemids.map(itemID => db.none(`INSERT INTO company_offers_item (company_id, item_id) VALUES ($1 , $2)`, [id.id, itemID])))
-        )
-        .then(() => {
-            res.send("Success!")
-        });
+    let bd = req.body
+    //Still need to implement input validation
+
+    //Geocode address to lat/lon using the Nominatim API.
+    rp({
+        uri:"https://nominatim.openstreetmap.org/search",
+        qs: {
+            street: bd.street + " " + bd.streetno,
+            city: bd.city,
+            postalcode: zipcode,
+            format: "json"
+        },
+        json: true
+    }).then((locInformation) => {
+        //Need to implement error handling for empty response or timeout
+        let lat = locInformation[0].lat;
+        let lon = locInformation[0].lon;
+
+        //Insert company into DB
+        db.one(`
+            INSERT INTO company (
+                name, 
+                email,
+                description, 
+                reason, 
+                img_url, 
+                paypal, 
+                thank_you_msg, 
+                street, 
+                street_no, 
+                zip_code, 
+                city,
+                location) 
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, ST_SetSRID(ST_Point($12, $13))::geography) 
+            RETURNING id`, 
+            [bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city, lat, lon])
+            //Then add all items to the company
+            .then((id) => Promise.all(
+                bd.itemids.map(itemID => db.none(`INSERT INTO company_offers_item (company_id, item_id) VALUES ($1 , $2)`, [id.id, itemID])))
+            )
+            .then(() => {
+                res.send("Success!")
+            });
+    });
 }
 
 function getCompanyListHandler(req,res){
