@@ -26,7 +26,7 @@ export class PaymentPage implements OnInit {
         merchantPrivacyPolicyURL: '',
         merchantUserAgreementURL: ''
       })).then(() => {
-        const payment = new PayPalPayment('3.99', 'EUR', 'WeLL', 'Sale');
+        const payment = new PayPalPayment('3.99', 'EUR', 'WeLoveLocal', 'Sale');
         this.payPal.renderSinglePaymentUI(payment).then(() => {
           console.log('Payment successful');
         }, () => {
