@@ -1,3 +1,6 @@
+//imports
+const utility = require("./utility.js")
+
 function getItemsHandler(req,res){
     //Checking if all required parameters have a value
     missingParam = utility.requireParameters(["id"],req);
