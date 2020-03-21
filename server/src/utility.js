@@ -32,11 +32,18 @@ function validateBody(req, res, next) {
     next();
 }
 
-function internalServerError(error){
-    console.log(error)
+function catchInternalError(req, res, next){
+    next()
+    .catch((error) => {
+        console.log(error)
         res.status = 500;
         res.send("500 Internal Server Error");
         return;
+    });
+}
+
+function cascadePromiseError(error){
+    throw error;
 }
 
 module.exports.requireParameters = requireParameters;
@@ -45,4 +52,5 @@ module.exports.requireBodyParameters = requireBodyParameters;
 module.exports.validateParams = validateParams;
 module.exports.validateBody = validateBody;
 
-module.exports.internalServerError = internalServerError;
+module.exports.catchInternalError = catchInternalError;
+module.exports.cascadePromiseError = cascadePromiseError;

@@ -18,6 +18,7 @@ const itemHandler = require("./src/item.js");
 
 app.get("*", utility.validateParams);
 app.post("*", utility.validateBody);
+app.use(utility.catchInternalError);
 
 //Company Endpoints
 app.get("/company", companyHandler.get);
