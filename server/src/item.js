@@ -1,8 +1,9 @@
 function getItemsHandler(req,res){
     //Checking if all required parameters have a value
-    if(!req.query.id) {
+    missingParam = utility.requireParameters(["id"],req);
+    if(missingParam) {
         res.status = 400;
-        res.send("400 Bad Request: Missing parameter id.")
+        res.send("400 Bad Request: Missing parameter " + missingParam + ".")
         return
     }
     res.send("Please implement me")
