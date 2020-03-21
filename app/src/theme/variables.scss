@@ -1,6 +1,25 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+:root {
+  --color_pcolor: hsla(27, 42%, 76%, 1);
+  --color_scolor: hsla(9, 76%, 35%, 1);
+  --color_positive: #27AE60;
+  --color_negative: #EB5757;
+
+  --color_gray_dark: #404040;
+  --color_gray_medium: #5b5a5a;
+  --color_gray_light: #808080;
+  --color_gray_background: #eaeaea;
+
+  --color_pcolor_darker: hsla(27, 42%, 71%, 1);
+  --color_pcolor_darker_2: hsla(27, 42%, 66%, 1);
+  --color_pcolor_darker_3: hsla(27, 42%, 61%, 1);
+  --color_scolor_darker: hsla(9, 76%, 30%, 1);
+  --color_scolor_darker_2: hsla(9, 76%, 25%, 1);
+  --color_scolor_darker_3: hsla(9, 76%, 20%, 1);
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
@@ -225,5 +244,19 @@
 
   ion-title.title-large {
     --color: white;
+  }
+
+}
+
+$customColors: ('pcolor', 'pcolor-darker', 'scolor', 'scolor-darker', 'white', 'gray', 'blue', 'positive', 'negative');
+
+@each $color in $customColors {
+  .ion-color-#{$color} {
+    --ion-color-base: var(--ion-color-#{$color}) !important;
+    --ion-color-base-rgb: var(--ion-color-#{$color}-rgb) !important;
+    --ion-color-contrast: var(--ion-color-#{$color}-contrast) !important;
+    --ion-color-contrast-rgb: var(--ion-color-#{$color}-contrast-rgb) !important;
+    --ion-color-shade: var(--ion-color-#{$color}-shade) !important;
+    --ion-color-tint: var(--ion-color-#{$color}-tint) !important;
   }
 }

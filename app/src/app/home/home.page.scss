@@ -1,3 +1,7 @@
+ion-content{
+  --background: var(--color_scolor_darker_2);
+}
+
 #container {
   text-align: center;
 
@@ -6,6 +10,10 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+
+  color: var(--color_pcolor);
+
+  display: inline-block;
 }
 
 #container strong {
@@ -17,9 +25,12 @@
   font-size: 16px;
   line-height: 22px;
 
-  color: #8c8c8c;
-
   margin: 0;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #container a {
