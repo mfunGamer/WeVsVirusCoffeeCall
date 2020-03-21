@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-account',
@@ -9,7 +10,7 @@ export class CreateAccountPage implements OnInit {
 
   datenschutz = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,7 @@ export class CreateAccountPage implements OnInit {
 
   weiterPressed() {
     console.log("weiterButtonPressed!");
+    this.router.navigateByUrl('/home');
   }
 
 
