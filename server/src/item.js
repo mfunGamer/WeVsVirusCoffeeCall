@@ -10,9 +10,9 @@ function getItemsHandler(req,res){
         return
     }
     db.oneOrNone(`SELECT name, icon_url, price, id FROM item WHERE id = $1`,req.query.id)
-        .then(item => {
-            res.json(item);
-        });
+    .then(item => {
+        res.json(item);
+    });
 }
 
 module.exports.get = getItemsHandler;

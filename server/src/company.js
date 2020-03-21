@@ -14,9 +14,9 @@ function getCompanyHandler(req,res){
         return;
     }
     db.oneOrNone(`SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg FROM company WHERE id = $1`,req.query.id)
-        .then(company => {
-            res.json(company);
-        });
+    .then(company => {
+        res.json(company);
+    });
 }
 
 function createCompanyHandler(req,res){
@@ -79,31 +79,41 @@ function createCompanyHandler(req,res){
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, ST_SetSRID(ST_Point($12, $13), 4326)::geography) 
             RETURNING id`, 
             [bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city, lon, lat])
-            //Then add all items to the company
-            .then((id) => Promise.all(
-                bd.itemids.map(itemID => db.none(`INSERT INTO company_offers_item (company_id, item_id) VALUES ($1 , $2)`, [id.id, itemID])))
-            )
-            .then(() => {
-                res.send("Success!")
-            });
+        //Then add all items to the company
+        .then((id) => Promise.all(
+            bd.itemids.map(itemID => db.none(`INSERT INTO company_offers_item (company_id, item_id) VALUES ($1 , $2)`, [id.id, itemID])))
+        )
+        .then(() => {
+            res.send("Success!")
+        });
     });
 }
 
 function getCompanyListHandler(req,res){
     //Checking if all required parameters have a value
-    missingParam = utility.requireParameters(["lat", "lon"],req);
+    missingParam = utility.requireParameters(["lat", "lon", "radius"],req);
     if(missingParam) {
         res.status = 400;
         res.send("400 Bad Request: Missing parameter " + missingParam + ".")
         return;
     }
 
-    page = 1;
-    if (req.query.page) {
-        page = req.query.page;
-    }
-
-    res.send("Please implement me");
+    db.manyOrNone(`
+        SELECT 
+            id,
+            name,
+            email,
+            description,
+            reason,
+            imgurl,
+            paypal,
+            thankyou
+        FROM company
+        WHERE ST_DWithin(location, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography, $3)`,
+        [req.query.lon, req.query.lat, req.query.radius])
+    .then((companies) => {
+        res.json(companies);
+    });
 }
 
 module.exports.get = getCompanyHandler;
