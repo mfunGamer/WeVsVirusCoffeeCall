@@ -1,19 +1,15 @@
 //Imports
 const express = require("express");
 const bodyParser = require("body-parser");
-const pgp = require("pg-promise")();
-const config = require("config");
-
-//Loading Config
-dbConf = config.get('dbConfig');
-
-//Initializing DB
-var db = pgp(dbConf);
+const database = require("./src/db.js");
 
 //Initializing ExpressJs
 const app = express();
 app.use(bodyParser.json());
 const port = 3000;
+
+//Initialize DB
+database.initDB();
 
 //Handlers
 const companyHandler = require("./src/company.js");
