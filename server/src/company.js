@@ -9,7 +9,10 @@ function getCompanyHandler(req,res){
         res.send("400 Bad Request: Missing parameter " + missingParam + ".")
         return
     }
-    res.send("Please implement me")
+    db.oneOrNone('SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg FROM company WHERE id = $1',id)
+        .then(company => {
+            res.json(company);
+        })
 }
 
 function createCompanyHandler(req,res){
