@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserDataService} from '../../services/UserDataService';
 
 @Component({
   selector: 'app-create-account',
@@ -8,18 +9,29 @@ import { Component, OnInit } from '@angular/core';
 export class CreateAccountPage implements OnInit {
 
   datenschutz = false;
+  username = '';
 
-  constructor() { }
+  constructor(
+      public udService: UserDataService
+  ) { }
 
   ngOnInit() {
   }
 
+  isButtonEnabled() {
+    // tslint:disable-next-line:triple-equals
+    return (!this.datenschutz || this.username.length == 0);
+  }
+
   datenschutzChange() {
-    console.log("Datenschutz Changed to " + this.datenschutz);
+    console.log('Datenschutz Changed to ' + this.datenschutz);
   }
 
   weiterPressed() {
-    console.log("weiterButtonPressed!");
+    console.log('weiterButtonPressed!');
+
+    this.udService.saveUserName(this.username);
+
   }
 
 

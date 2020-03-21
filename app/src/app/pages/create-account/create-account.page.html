@@ -15,7 +15,7 @@
       <!-- Name input -->
       <ion-col></ion-col>
       <ion-col size="10">
-      <ion-input style="text-align: center" placeholder="Gib hier bitte deinen Namen ein"></ion-input>
+      <ion-input style="text-align: center" placeholder="Gib hier bitte deinen Namen ein" [(ngModel)]="username"></ion-input>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
@@ -47,7 +47,7 @@
 
     <ion-row style="height: 10%">
       <ion-col>
-      <ion-button expand="block" fill="outline" [class.button-disabled]="!datenschutz" (click)="weiterPressed()" routerLink="/home" routerDirection="root">Weiter</ion-button>
+      <ion-button expand="block" fill="outline" [class.button-disabled]="isButtonEnabled()" (click)="weiterPressed()" routerLink="/home" routerDirection="root">Weiter</ion-button>
       </ion-col>
     </ion-row>
 

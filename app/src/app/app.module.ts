@@ -22,6 +22,7 @@ import {DataProtectionPageModule} from './pages/data-protection/data-protection.
 import {CreateAccountPageModule} from './pages/create-account/create-account.module';
 import {HttpClientModule} from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
+import {UserDataService} from "./services/UserDataService";
 
 @NgModule({
   declarations: [AppComponent],
@@ -52,6 +53,7 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
   providers: [
       Geolocation,
       StatusBar,
+      UserDataService,
       SplashScreen,
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
