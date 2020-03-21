@@ -130,6 +130,7 @@ function getCompanyListHandler(req,res){
         .then((items) => {
             companies = companies.map((company) => {
                 company.items = items.filter(item => item.company_id == company.id)[0];
+                return company;
             });
             res.json(companies);
         });
