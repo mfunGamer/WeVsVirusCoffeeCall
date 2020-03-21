@@ -1,21 +1,18 @@
-const express = require('express')
+//Imports
+const express = require('express');
+const companyHandler = require('./src/company.js');
+const itemHandler = require('./src/item.js');
+
+//Initializing ExpressJs
 const app = express()
 const port = 3000
 
-app.get('/company', function(req,res){
-    res.send("Please implement me")
-});
+//Company Endpoints
+app.get('/company', companyHandler.get);
+app.post('/company', companyHandler.create);
+app.get('/companylist', companyHandler.getList);
 
-app.post('/company', function(req,res){
-    res.send("Please implement me")
-});
-
-app.get('/companylist', function(req,res){
-    res.send("Please implement me")
-});
-
-app.get('/items', function(req,res){
-    res.send("Please implement me")
-});
+//Item Endpoints
+app.get('/items', itemHandler.get);
 
 app.listen(port, () => console.log(`Running WeVsVirus Backend on port ${port}!`));
