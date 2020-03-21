@@ -6,18 +6,16 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
+      <div class="sidemenu">
       <ion-list>
-        <ion-item routerLink="home" routerDirection="root">
-          <ion-icon name="home-outline" slot="start"></ion-icon>
-          Home
-        </ion-item>
         <ion-menu-toggle auto-hide="true" *ngFor="let pages of navigate">
-          <ion-item [routerLink]="pages.url" routerDirection="forward">
+          <ion-item [routerDirection]="'root'" [routerLink]="[pages.url]">
             <ion-icon [name]="pages.icon" slot="start"></ion-icon>
             {{pages.title}}
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
+      </div>
     </ion-content>
   </ion-menu>
   <ion-router-outlet id="content1"></ion-router-outlet>
