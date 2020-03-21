@@ -17,6 +17,9 @@
       </ion-list>
 
     </ion-content>
+
+    <ion-fab class="homeButton"><ion-fab-button *ngIf="isOnHomePage()" (click)="onHomeButton()"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-fab-button></ion-fab>
+
   </ion-menu>
   <ion-router-outlet id="content1"></ion-router-outlet>
 </ion-app>

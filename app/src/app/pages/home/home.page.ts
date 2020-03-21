@@ -19,7 +19,6 @@ export class HomePage {
               public geolocation: Geolocation,
               private menu: MenuController
               ) {
-
   }
 
   ionViewDidEnter() {
