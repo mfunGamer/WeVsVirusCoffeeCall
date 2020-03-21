@@ -4,8 +4,15 @@ export class CompanyDetails {
     public name:string;
     public items:any;
     public icon:any;
+    public contact:string;
+    public location:string;
+    public mainPicture:any;
 
     constructor() {
+    }
+
+    setCompanyMainPicture(pic) {
+        this.mainPicture = pic;
     }
 
     setCompanyID(compID) {
@@ -28,6 +35,14 @@ export class CompanyDetails {
         this.icon = company_icon;
     }
 
+    setCompanyContact(contactinfo) {
+        this.contact = contactinfo
+    }
+
+    setCompanyLocation(locinfo) {
+        this.location = locinfo
+    }
+
     getCompanyID() {
         return this.id
     }
@@ -46,5 +61,17 @@ export class CompanyDetails {
 
     getCompanyIcon() {
         return this.icon;
+    }
+
+    getCompanyContact() {
+        return this.contact;
+    }
+
+    getCompanyLocation() {
+        return this.location;
+    }
+
+    getCompanyMainPicture() {
+        return this.mainPicture;
     }
 }

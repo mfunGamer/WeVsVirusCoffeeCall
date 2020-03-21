@@ -1,22 +1,51 @@
 <ion-header>
   <ion-toolbar>
     <ion-button slot="start">Zurück</ion-button>
+
     <ion-title>Details</ion-title>
-    <ion-button slot="end">
+    <ion-button slot="end" (click)="checkOrder()">
       <ion-icon name="cart-outline"></ion-icon>
-      <ion-label>{{total_sum}}€</ion-label>
+      <ion-label>{{total_sum_2_string}}€</ion-label>
     </ion-button>
   </ion-toolbar>
 </ion-header>
 
 
-<img id="pic" src="https://cdn.vox-cdn.com/thumbor/WojLgSa3tzWeE10bA5NF_0lfhYY=/0x0:2048x1365/920x613/filters:focal(861x520:1187x846):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/59488337/20786021_1964885550462647_3189575152413374824_o.0.jpg" alt="Kein Bild">
-
-<h1 id="text1">Coffee Shop FantasyLand Super Store</h1>
-
-<h2 id="text2">{{companyInformations.getCompanyDescription()}}</h2>
-
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img id="pic" align="center" src="{{companyInformations.getCompanyMainPicture()}}" alt="Kein Bild vorhanden.">
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col><h1 id="text1">{{companyInformations.getCompanyName()}}</h1></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col><h4 id="text2">{{companyInformations.getCompanyDescription()}}</h4></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div>
+          <h3>Ort</h3>
+          {{companyInformations.getCompanyLocation()}}
+        </div>
+
+      </ion-col>
+      <ion-col>
+        <div>
+          <h3>Kontakt</h3>
+          {{companyInformations.getCompanyContact()}}
+        </div>
+
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
 
     <ion-item-divider>
       <ion-label id="menu_text">
@@ -24,7 +53,6 @@
       </ion-label>
     </ion-item-divider>
 
-   <ion-list>
   <!-- List of Text Items -->
     <ion-item *ngFor="let iter of all_articles">
       <ion-col>
@@ -35,15 +63,13 @@
         <h4>{{iter.getItemName()}}</h4>
       </ion-col>
 
-      <ion-col><h4>{{iter.getItemValue()}}€</h4></ion-col>
+      <ion-col><h4>{{iter.getItemValue().toFixed(2)}} €</h4></ion-col>
 
       <ion-col align="right">
-        <ion-button (click)="addArticles(iter.getItemValue(), iter)">In den Warenkorb legen</ion-button>
+        <ion-button (click)="addArticles(iter.getItemValue().toFixed(2), iter)">In den Warenkorb legen</ion-button>
       </ion-col>
 
     </ion-item>
-
-  </ion-list>
 
 </ion-content>
 
