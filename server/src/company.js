@@ -78,7 +78,7 @@ function createCompanyHandler(req,res){
                 location) 
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, ST_SetSRID(ST_Point($12, $13), 4326)::geography) 
             RETURNING id`, 
-            [bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city, lat, lon])
+            [bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city, lon, lat])
             //Then add all items to the company
             .then((id) => Promise.all(
                 bd.itemids.map(itemID => db.none(`INSERT INTO company_offers_item (company_id, item_id) VALUES ($1 , $2)`, [id.id, itemID])))
