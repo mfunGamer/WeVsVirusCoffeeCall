@@ -1,6 +1,6 @@
 <ion-content>
 
-  <ion-grid style="height: 100%">
+  <ion-grid style="height: 100%; background: var(--color_ice); color: var(--color_cherry)">
 
     <ion-row class="ion-align-items-end" style="height: 40%">
       <!-- Text -->
@@ -16,7 +16,7 @@
       <ion-col></ion-col>
       <ion-col size="10">
 
-      <ion-input style="text-align: center; background: dimgrey " placeholder="Gib hier bitte deinen Namen ein"></ion-input>
+      <ion-input style="text-align: center; background: var(--color_petrol) " placeholder="Gib hier bitte deinen Namen ein"></ion-input>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
@@ -33,7 +33,7 @@
       <!-- Picture upload -->
       <ion-col></ion-col>
       <ion-col class="ion-justify-content-center" style="text-align: center">
-    <ion-button style="text-align: center">Bild hochladen</ion-button>
+    <ion-button style="text-align: center; --background: var(--color_petrol); color: var(--color_cherry)">Bild hochladen</ion-button>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
@@ -41,10 +41,10 @@
     <ion-row class="ion-align-items-center" style="height: 10%">
       <!-- Data protection prompt -->
       <ion-col class="ion-align-items-right" style="text-align: right">
-        <ion-checkbox color="primary" [(ngModel)]="datenschutz" (ionChange)="datenschutzChange()"></ion-checkbox>
+        <ion-checkbox style="--background: var(--color_ice); --border-color: var(--color_cherry); --background-checked: var(--color_petrol); --border-color-checked: var(--color_petrol)" [(ngModel)]="datenschutz" (ionChange)="datenschutzChange()"></ion-checkbox>
       </ion-col>
       <ion-col size="10">
-        <ion-text class="one">Ich habe die <a href="/data-protection">Datenschutzbestimmungen</a> gelesen und akzeptiere sie.</ion-text>
+        <ion-text class="one">Ich habe die <a style="color: var(--color_petrol)" href="/data-protection">Datenschutzbestimmungen</a> gelesen und akzeptiere sie.</ion-text>
       </ion-col>
       <ion-col>
 
@@ -53,7 +53,7 @@
 
     <ion-row style="height: 10%" class="ion-justify-content-center" style="text-align: center">
       <ion-col>
-      <ion-button expand="block" fill="outline" [class.button-disabled]="!datenschutz" (click)="weiterPressed()">Weiter</ion-button>
+      <ion-button style="color: var(--color_petrol); --border-color: var(--color_petrol)" expand="block" fill="outline" [class.button-disabled]="!datenschutz" (click)="weiterPressed()">Weiter</ion-button>
       </ion-col>
     </ion-row>
 
