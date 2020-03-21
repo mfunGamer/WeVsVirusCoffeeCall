@@ -9,7 +9,10 @@ function getItemsHandler(req,res){
         res.send("400 Bad Request: Missing parameter " + missingParam + ".")
         return
     }
-    res.send("Please implement me")
+    db.oneOrNone(`SELECT name, icon_url, price, id FROM item WHERE id = $1`,req.query.id)
+        .then(item => {
+            res.json(item);
+        });
 }
 
 module.exports.get = getItemsHandler;
