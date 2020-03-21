@@ -12,7 +12,7 @@ function getCompanyHandler(req,res){
         res.send("400 Bad Request: Missing parameter " + missingParam + ".");
         return;
     }
-    db.oneOrNone('SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg FROM company WHERE id = $1',req.query.id)
+    db.oneOrNone(`SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg FROM company WHERE id = $1`,req.query.id)
         .then(company => {
             res.json(company);
         });
@@ -35,7 +35,16 @@ function createCompanyHandler(req,res){
         res.send("400 Bad Request: Missing parameter " + missingParam + ".")
         return
     }
-    res.send("Please implement me")
+    bd = res.body
+    db.one(`INSERT INTO company (name, email, description, reason, img_url, paypal, thank_you_msg) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`, bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou)
+        .then((id) => Promise.all(
+            bd.itemids.map(itemID => db.none(`INSERT INTO company_offers_item (company_id, item_id) VALUES ($1 , $2)`, id, itemID)))
+        );
+    for(let i=0; i<bd.itemids; i++){
+
+    }
+    res.send("Success!")
 }
 
 function getCompanyListHandler(req,res){
