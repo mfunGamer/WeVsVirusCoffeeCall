@@ -22,7 +22,8 @@ import {DataProtectionPageModule} from './pages/data-protection/data-protection.
 import {CreateAccountPageModule} from './pages/create-account/create-account.module';
 import {HttpClientModule} from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
-import {UserDataService} from "./services/UserDataService";
+import {UserDataService} from './services/UserDataService';
+import {IonicStorageModule} from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -46,7 +47,7 @@ import {UserDataService} from "./services/UserDataService";
       LegalNoticePageModule,
       DataProtectionPageModule,
       CreateAccountPageModule,
-
+      IonicStorageModule.forRoot(),
       HttpClientModule,
   ],
 

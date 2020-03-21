@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class UserDataService {
 
-    constructor() {
+    constructor(
+        private storage: Storage
+    ) {
     }
 
     saveUserName(username: string) {
