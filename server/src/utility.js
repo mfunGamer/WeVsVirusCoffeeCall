@@ -32,8 +32,17 @@ function validateBody(req, res, next) {
     next();
 }
 
+function internalServerError(error){
+    console.log(error)
+        res.status = 500;
+        res.send("500 Internal Server Error");
+        return;
+}
+
 module.exports.requireParameters = requireParameters;
 module.exports.requireBodyParameters = requireBodyParameters;
 
 module.exports.validateParams = validateParams;
 module.exports.validateBody = validateBody;
+
+module.exports.internalServerError = internalServerError;

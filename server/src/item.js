@@ -13,12 +13,7 @@ function getItemsHandler(req,res){
     .then(item => {
         res.json(item);
     })
-    .catch((e) => {
-        console.log(e)
-        res.status = 500;
-        res.send("500 Internal Server Error");
-        return;
-    });
+    .catch(utility.internalServerError);
 }
 
 module.exports.get = getItemsHandler;

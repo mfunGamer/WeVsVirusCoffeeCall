@@ -20,13 +20,10 @@ function getCompanyHandler(req,res){
             company.items = items;
             res.json(company);
         })
+        .catch(utility.internalServerError);
+
     })
-    .catch((e) => {
-        console.log(e)
-        res.status = 500;
-        res.send("500 Internal Server Error");
-        return;
-    });
+    .catch(utility.internalServerError);
 }
 
 function createCompanyHandler(req,res){
@@ -94,14 +91,10 @@ function createCompanyHandler(req,res){
         )
         .then(() => {
             res.send("Success!")
-        });
+        })
+        .catch(utility.internalServerError);
     })
-    .catch((e) => {
-        console.log(e)
-        res.status = 500;
-        res.send("500 Internal Server Error");
-        return;
-    });
+    .catch(utility.internalServerError);
 }
 
 function getCompanyListHandler(req,res){
@@ -148,14 +141,10 @@ function getCompanyListHandler(req,res){
                 return company;
             });
             res.json(companies);
-        });
+        })
+        .catch(utility.internalServerError);
     })
-    .catch((e) => {
-        console.log(e)
-        res.status = 500;
-        res.send("500 Internal Server Error");
-        return;
-    });
+    .catch(utility.internalServerError);
 }
 
 module.exports.get = getCompanyHandler;
