@@ -9,7 +9,7 @@ export class HomePage {
 
   constructor() {}
 
-  exmapleMethod(){
+  exampleMethod(){
     alert("Ola");
   }
 
