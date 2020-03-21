@@ -116,7 +116,23 @@ function getCompanyListHandler(req,res){
         WHERE ST_DWithin(location, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography, $3)`,
         [req.query.lon, req.query.lat, req.query.radius])
     .then((companies) => {
-        res.json(companies);
+        Promise.all(companies.map(company => db.manyOrNone(`
+            SELECT 
+                name, 
+                icon_url, 
+                price, 
+                id,
+                company_id
+            FROM item 
+            JOIN company_offers_item ON item.id = company_offers_item.item_id 
+            WHERE company_id = $1`, 
+        company.id)))
+        .then((items) => {
+            companies = companies.map((company) => {
+                company.items = items.filter(item => item.company_id == company.id)[0];
+            });
+            res.json(companies);
+        });
     });
 }
 
