@@ -1,27 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>CreateAccount</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-<ion-text>Zuerst benötigen wir deinen Namen und ein Bild von dir, damit dich deine Freunde wiedererkennen können.</ion-text>
-  <!-- Default Input -->
-  <ion-input placeholder="Name"></ion-input>
 
-  <ion-button style="text-align: center">Bild hochladen</ion-button>
-  <ion-col class="ion-padding-top">
-    <div>
-    </div>
-  </ion-col>
-  <!-- Checkbox Colors -->
-  <ion-checkbox color="primary"></ion-checkbox>
-  <ion-text>Ich habe die <a href="http://corndogoncorndog.com/">Datenschutzbestimmungen</a> gelesen und akzeptiere sie.</ion-text>
-  <ion-col class="ion-padding-top">
-    <div>
+  <ion-grid style="height: 100%">
 
-    </div>
-  </ion-col>
+    <ion-row class="ion-align-items-end" style="height: 40%">
+      <!-- Text -->
+      <ion-text style="text-align: center">Zuerst benötigen wir deinen Namen und ein Bild von dir, damit dich deine Freunde wiedererkennen können.</ion-text>
+    </ion-row>
+
+    <ion-row style="height: 20%">
+      <!-- Name input -->
+      <ion-col></ion-col>
+      <ion-col size="6">
+      <ion-input style="text-align: center" placeholder="Gib hier bitte deinen Namen ein"></ion-input>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row style="height: 20%">
+      <!-- Picture upload -->
+      <ion-col></ion-col>
+      <ion-col>
+    <ion-button style="text-align: center">Bild hochladen</ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-center" style="height: 10%">
+      <!-- Data protection prompt -->
+      <ion-col size="1">
+
+      </ion-col>
+      <ion-col size="1">
+        <ion-checkbox color="primary"></ion-checkbox>
+      </ion-col>
+      <ion-col>
+        <ion-text>Ich habe die <a href="http://corndogoncorndog.com/">Datenschutzbestimmungen</a> gelesen <br>und akzeptiere sie.</ion-text>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row style="height: 10%">
+      <ion-col>
+      <ion-button expand="block" fill="outline">Weiter</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 
 
 </ion-content>
