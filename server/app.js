@@ -1,11 +1,15 @@
 //Imports
 const express = require("express");
+const bodyParser = require("body-parser");
+
+//Handlers
 const companyHandler = require("./src/company.js");
 const itemHandler = require("./src/item.js");
 
 //Initializing ExpressJs
-const app = express()
-const port = 3000
+const app = express();
+app.use(bodyParser.json());
+const port = 3000;
 
 //Company Endpoints
 app.get("/company", companyHandler.get);
