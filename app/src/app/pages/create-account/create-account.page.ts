@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {UserDataService} from '../../services/UserDataService';
 
 @Component({
@@ -12,7 +13,8 @@ export class CreateAccountPage implements OnInit {
   username = '';
 
   constructor(
-      public udService: UserDataService
+      public udService: UserDataService,
+      private router: Router
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,7 @@ export class CreateAccountPage implements OnInit {
 
   weiterPressed() {
     console.log('weiterButtonPressed!');
+    this.router.navigateByUrl('/home');
 
     this.udService.saveUserName(this.username);
 
