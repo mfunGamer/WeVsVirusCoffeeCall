@@ -105,9 +105,9 @@ function getCompanyListHandler(req,res){
             email,
             description,
             reason,
-            imgurl,
+            img_url,
             paypal,
-            thankyou
+            thank_you_msg
         FROM company
         WHERE ST_DWithin(location, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography, $3)`,
         [req.query.lon, req.query.lat, req.query.radius])
