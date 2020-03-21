@@ -16,8 +16,8 @@ database.initDB();
 const companyHandler = require("./src/company.js");
 const itemHandler = require("./src/item.js");
 
-app.get("/", utility.validateParams);
-app.post("/", utility.validateBody);
+app.get("*", utility.validateParams);
+app.post("*", utility.validateBody);
 
 //Company Endpoints
 app.get("/company", companyHandler.get);
