@@ -10,7 +10,7 @@ export class UserDataService {
     }
 
     saveUserName(username: string) {
-        console.log("yeet");
+        console.log(username);
     }
 
     getUserName(): string {
