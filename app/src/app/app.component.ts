@@ -3,12 +3,12 @@ import { NavController , Platform } from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {HomePage} from "./home/home.page";
-import {SettingsPage} from "./settings/settings.page";
-import {LegalNoticePage} from "./legal-notice/legal-notice.page";
-import {DataProtectionPage} from "./data-protection/data-protection.page";
-import {CreateAccountPage} from "./create-account/create-account.page";
-import {RewardHistoryPage} from "./reward-history/reward-history.page";
+import {HomePage} from "./pages/home/home.page";
+import {SettingsPage} from "./pages/settings/settings.page";
+import {LegalNoticePage} from "./pages/legal-notice/legal-notice.page";
+import {DataProtectionPage} from "./pages/data-protection/data-protection.page";
+import {CreateAccountPage} from "./pages/create-account/create-account.page";
+import {RewardHistoryPage} from "./pages/reward-history/reward-history.page";
 
 @Component({
   selector: 'app-root',
