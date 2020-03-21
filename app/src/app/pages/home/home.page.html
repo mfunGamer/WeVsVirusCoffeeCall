@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
       Blank
     </ion-title>
@@ -20,4 +23,19 @@
 
 
   <ion-button (click)="exampleMethod()">Spanisch?</ion-button>
+
+
+  <!-- Emin -->
+  <ion-button expand="block" routerLink="/settings" routerDirection="forward">
+    GoTo Settings
+  </ion-button>
+
+  <ion-button expand="block" routerLink="/create-account" routerDirection="forward">
+    GoTo CreateAccount
+  </ion-button>
+
+  <ion-button expand="block" routerLink="/home" routerDirection="root">
+    GoTo Root Kappa
+  </ion-button>
+
 </ion-content>
