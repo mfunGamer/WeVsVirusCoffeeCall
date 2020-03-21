@@ -40,6 +40,21 @@ export class AppComponent {
                   icon  : "key-outline"
               },
               {
+                  title : "RewardHistory",
+                  url   : "reward-history",
+                  icon  : "trophy-outline"
+              },
+              {
+                  title : "LegalNotice",
+                  url   : "legal-notice",
+                  icon  : "alert-circle-outline"
+              },
+              {
+                  title : "DataProtection",
+                  url   : "data-protection",
+                  icon  : "shield-checkmark-outline"
+              },
+              {
                   title : "Settings",
                   url   : "settings",
                   icon  : "settings-outline"
