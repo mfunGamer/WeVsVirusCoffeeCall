@@ -102,6 +102,7 @@ function getCompanyListHandler(req,res){
         return;
     }
 
+    //Get all companies within specified distance
     db.manyOrNone(`
         SELECT 
             id,
@@ -115,7 +116,9 @@ function getCompanyListHandler(req,res){
         FROM company
         WHERE ST_DWithin(location, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography, $3)`,
         [req.query.lon, req.query.lat, req.query.radius])
+    //Then get all corresponding items
     .then((companies) => {
+        //Create a promise with a db query for every company
         Promise.all(companies.map(company => db.manyOrNone(`
             SELECT 
                 name, 
@@ -127,6 +130,7 @@ function getCompanyListHandler(req,res){
             JOIN company_offers_item ON item.id = company_offers_item.item_id 
             WHERE company_id = $1`, 
         company.id)))
+        //when they are all resolved match item lists to companies
         .then((items) => {
             companies = companies.map((company) => {
                 company.items = items[0].find(item => item.company_id == company.id);
