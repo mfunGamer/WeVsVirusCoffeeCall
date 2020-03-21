@@ -1,14 +1,8 @@
 import { Component} from '@angular/core';
-import { NavController , Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {HomePage} from "./pages/home/home.page";
-import {SettingsPage} from "./pages/settings/settings.page";
-import {LegalNoticePage} from "./pages/legal-notice/legal-notice.page";
-import {DataProtectionPage} from "./pages/data-protection/data-protection.page";
-import {CreateAccountPage} from "./pages/create-account/create-account.page";
-import {RewardHistoryPage} from "./pages/reward-history/reward-history.page";
 
 @Component({
   selector: 'app-root',
@@ -18,29 +12,41 @@ import {RewardHistoryPage} from "./pages/reward-history/reward-history.page";
 })
 export class AppComponent {
 
-
-  pages: Array<{title: string, component: any}>;
+    navigate : any;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public navCtrl: NavController
+
   ) {
+
+      this.sideMenu();
     this.initializeApp();
 
-    this.pages = [
-
-        { title: 'Home', component: HomePage },
-        { title: 'Create Account', component: CreateAccountPage},
-        { title: 'Fotos', component: RewardHistoryPage},
-        { title: 'Datenschutz', component: DataProtectionPage},
-        { title: 'Impressum', component: LegalNoticePage},
-        { title: 'Settings', component: SettingsPage},
-
-    ];
-
   }
+
+  sideMenu(){
+      this.navigate =
+          [
+              {
+                  title : "Home",
+                  url   : "home",
+                  icon  : "home-outline"
+              },
+              {
+                  title : "Create Account",
+                  url   : "create-account",
+                  icon  : "key-outline"
+              },
+              {
+                  title : "Settings",
+                  url   : "settings",
+                  icon  : "settings-outline"
+              },
+          ]
+  }
+
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -48,12 +54,4 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
-
-  openPage(page){
-      console.log(page.component.name + " pushed");
-      //this.navCtrl.push(page.component);
-
-  }
-
-
 }
