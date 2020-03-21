@@ -2,6 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const database = require("./src/db.js");
+const utility = require("./src/utility.js")
 
 //Initializing ExpressJs
 const app = express();
@@ -14,6 +15,9 @@ database.initDB();
 //Handlers
 const companyHandler = require("./src/company.js");
 const itemHandler = require("./src/item.js");
+
+app.get("/", utility.validateParams);
+app.post("/", utility.validateBody);
 
 //Company Endpoints
 app.get("/company", companyHandler.get);
