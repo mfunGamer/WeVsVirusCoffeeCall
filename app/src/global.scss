@@ -25,22 +25,33 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+
 ion-menu{
   ion-item,
   ion-list, .list-md,
   ion-toolbar,
+
+
   ion-content{
-    --background: var(--dark-color);
-    --ion-background: var(--dark-color);
+    --background: var(--color_ice);
+    --ion-background: var(--color_cherry);
   }
   ion-item{
-    color: var(--text-color);
+    color: var(--color_cherry);
   }
   ion-icon{
-    color: #21a3ee
-  }
-  ion-toolbar{
-    --background: var(--dark-color);
+    color: var(--color_cherry);
   }
 
+  ion-title{
+    color: var(--color_cherry);
+    font-size: 30px;
+
+  }
+
+
 }
+
+//--color_ice: #F5FCFC;
+//--color_petrol: #8ED1CC;
+//--color_cherry: #A10B2C;
