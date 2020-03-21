@@ -20,6 +20,8 @@ import {RewardHistoryPageModule} from "./pages/reward-history/reward-history.mod
 import {LegalNoticePageModule} from "./pages/legal-notice/legal-notice.module";
 import {DataProtectionPageModule} from "./pages/data-protection/data-protection.module";
 import {CreateAccountPageModule} from "./pages/create-account/create-account.module";
+import {PaymentPage} from "./pages/payment/payment.page";
+import {PaymentPageModule} from "./pages/payment/payment.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +31,8 @@ import {CreateAccountPageModule} from "./pages/create-account/create-account.mod
       RewardHistoryPage,
       LegalNoticePage,
       DataProtectionPage,
-      CreateAccountPage
+      CreateAccountPage,
+      PaymentPage
 
   ],
 
@@ -42,7 +45,8 @@ import {CreateAccountPageModule} from "./pages/create-account/create-account.mod
       RewardHistoryPageModule,
       LegalNoticePageModule,
       DataProtectionPageModule,
-      CreateAccountPageModule
+      CreateAccountPageModule,
+      PaymentPageModule
   ],
 
   providers: [
