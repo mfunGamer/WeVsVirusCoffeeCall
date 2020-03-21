@@ -5,8 +5,8 @@
     <ion-row class="ion-align-items-end" style="height: 40%">
       <!-- Text -->
       <ion-col></ion-col>
-      <ion-col class="ion-justify-content-center" size="10">
-      <ion-text style="text-align: center">Zuerst benötigen wir deinen Namen und ein Bild von dir, damit dich deine Freunde wiedererkennen können.</ion-text>
+      <ion-col class="ion-justify-content-center" size="10" style="text-align: center">
+      <ion-text>Zuerst benötigen wir deinen Namen und ein Bild von dir, damit dich deine Freunde wiedererkennen können.</ion-text>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
@@ -14,7 +14,7 @@
     <ion-row style="height: 20%">
       <!-- Name input -->
       <ion-col></ion-col>
-      <ion-col size="6">
+      <ion-col size="10">
       <ion-input style="text-align: center" placeholder="Gib hier bitte deinen Namen ein"></ion-input>
       </ion-col>
       <ion-col></ion-col>
@@ -23,7 +23,7 @@
     <ion-row style="height: 20%">
       <!-- Picture upload -->
       <ion-col></ion-col>
-      <ion-col>
+      <ion-col class="ion-justify-content-center" style="text-align: center">
     <ion-button style="text-align: center">Bild hochladen</ion-button>
       </ion-col>
       <ion-col></ion-col>
@@ -37,7 +37,7 @@
       <ion-col>
         <ion-checkbox color="primary" [(ngModel)]="datenschutz" (ionChange)="datenschutzChange()"></ion-checkbox>
       </ion-col>
-      <ion-col size="8">
+      <ion-col size="10">
         <ion-text>Ich habe die <a href="http://corndogoncorndog.com/">Datenschutzbestimmungen</a> gelesen und akzeptiere sie.</ion-text>
       </ion-col>
       <ion-col>
