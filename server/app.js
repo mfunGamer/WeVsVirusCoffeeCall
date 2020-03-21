@@ -8,7 +8,7 @@ const config = require("config");
 dbConf = config.get('dbConfig');
 
 //Initializing DB
-const db = pgp(dbConf);
+var db = pgp(dbConf);
 
 //Initializing ExpressJs
 const app = express();
