@@ -15,8 +15,8 @@ async function getItemsHandler(req,res){
     }
     catch (e){
         console.log(e);
-        res.status = 500;
-            res.send("500 Internal Server Error");
+        res.status(500);
+        res.send("500 Internal Server Error");
     }
 }
 

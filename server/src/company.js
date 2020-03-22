@@ -18,7 +18,7 @@ async function getCompanyHandler(req, res, next){
         items = await db.manyOrNone(`SELECT name, icon_url, price, id FROM item JOIN company_offers_item ON item.id = company_offers_item.item_id WHERE company_id = $1`, req.query.id);
 
         if(company == undefined || company == null){
-            res.status = 400;
+            res.status(400);
             res.send("Couldnt find company. Maybe it has not been approved yet.");
             return;
         }
@@ -28,7 +28,7 @@ async function getCompanyHandler(req, res, next){
     }
     catch (e){
         console.log(e);
-        res.status = 500;
+        res.status(500);
         res.send("500 Internal Server Error");
     }
 }
@@ -53,7 +53,7 @@ async function createCompanyHandler(req,res){
             "owner"
         ],req);
         if(missingParam) {
-            res.status = 500;
+            res.status(500);
             res.send("400 Bad Request: Missing parameter " + missingParam + ".")
             return
         }
@@ -105,7 +105,7 @@ async function createCompanyHandler(req,res){
     }
     catch (e){
         console.log(e);
-        res.status = 500;
+        res.status(500);
             res.send("500 Internal Server Error");
     }
 }
@@ -160,7 +160,7 @@ async function getCompanyListHandler(req,res){
     }
     catch (e){
     console.log(e);
-    res.status = 500;
+    res.status(500);
         res.send("500 Internal Server Error");
     }
 }
