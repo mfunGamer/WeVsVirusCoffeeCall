@@ -16,7 +16,7 @@
 
 #mainNav {
   min-height: 56px;
-  background-color: var(--ex-color);
+  background-color: #fff;
 }
 
 #mainNav .navbar-toggler {
@@ -108,13 +108,10 @@
 }
 
 .masthead h1 {
-  font-family: 'Varela Round';
+  font-family: 'Antic';
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 0.8rem;
-  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
 }
 
 .masthead h2 {
@@ -148,7 +145,7 @@
 .btn {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
-  font-family: 'Varela Round';
+  font-family: 'Antic';
   font-size: 80%;
   text-transform: uppercase;
   letter-spacing: .15rem;
@@ -173,8 +170,7 @@
 }
 
 .about-section {
-  padding-top: 10rem;
-  background: linear-gradient(to bottom, var(--main-bg-color) 0%, rgba(22, 22, 22, 0.9) 75%, rgba(22, 22, 22, 0.8) 100%);
+  padding-top: 3rem;
 }
 
 .about-section p {
@@ -182,7 +178,6 @@
 }
 
 .why-section {
-  padding-top: 10rem;
   background: linear-gradient(to bottom, var(--main-bg-color) 0%, rgba(22, 22, 22, 0.9) 75%, rgba(22, 22, 22, 0.8) 100%);
 }
 
@@ -191,7 +186,7 @@
 }
 
 .team-section {
-  padding: 10rem 0;
+  padding: 5rem 0;
 }
 
 .team-section .featured-text {
@@ -222,7 +217,7 @@
 }
 
 .partner-section {
-  padding: 10rem 0;
+  padding: 5rem 0;
   background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("../img/bg-form.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -234,7 +229,7 @@
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
   height: auto;
-  font-family: 'Varela Round';
+  font-family: 'Antic';
   font-size: 80%;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
@@ -252,7 +247,7 @@
 
 .contact-section .card h4 {
   font-size: 0.8rem;
-  font-family: 'Varela Round';
+  font-family: 'Antic';
   text-transform: uppercase;
   letter-spacing: 0.15rem;
 }
@@ -286,7 +281,7 @@
 }
 
 body {
-  font-family: 'Nunito';
+  font-family: 'Antic';
   letter-spacing: 0.0625em;
 }
 

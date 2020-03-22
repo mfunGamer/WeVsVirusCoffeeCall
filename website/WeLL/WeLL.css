@@ -10,6 +10,40 @@
   
 }
 
+#why 
+{
+    background: initial;
+    background-color: var(--main-bg-color);
+    color: #000;
+}
+
+#why .row
+{
+    padding: 7%;
+}
+
+#why p
+{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.highlight-font
+{
+    font-family: 'Shadows Into Light', serif !important;
+    background: none;
+    color: #fff;
+}
+
+#about p
+{
+    margin-bottom: 10px;
+}
+
+#partner
+{
+    color: #fff !important;
+}
 
 select:required:invalid
 {
