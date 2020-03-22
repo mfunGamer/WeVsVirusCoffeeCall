@@ -15,18 +15,19 @@ export class UserDataService {
 
     }
 
-    getUserName(): Promise<String> {
+    getUserName(): Promise<string> {
         return this.storage.get('username');
 
 
     }
 
     saveProfilePictureURL(url: string) {
+        this.storage.set('profilePictureURL','url');
 
     }
 
-    getProfilePictureURL(): string {
-        return null;
+    getProfilePictureURL(): Promise<string> {
+        return this.storage.get("profilePictureURL");
     }
 
 }
