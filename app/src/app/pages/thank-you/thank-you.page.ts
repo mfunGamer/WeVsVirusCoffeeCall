@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {CompanyDetails} from "../company-info/CompanyDetails";
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
+import {ActionSheetController} from "@ionic/angular";
 
 @Component({
   selector: 'app-thank-you',
@@ -15,10 +16,7 @@ export class ThankYouPage implements OnInit {
   public companyImage: string;
   public amount: string;
 
-    public infoTags = ["id", "name", "email", "description", "reason", "img_url", "paypal", "thank_you_msg",
-        "owner", "company_type", "lat", "lon", "items"];
-
-  constructor(private route: ActivatedRoute, public router: Router) {
+  constructor(private route: ActivatedRoute, public router: Router, private socialSharing: SocialSharing, public actionSheetController: ActionSheetController) {
       this.route.queryParams.subscribe(params => {
           if (this.router.getCurrentNavigation().extras.state) {
               this.companyData = this.router.getCurrentNavigation().extras.state;
@@ -30,12 +28,6 @@ export class ThankYouPage implements OnInit {
 
               for (const key in this.companyData) {
                   const item: string = this.companyData[key];
-
-                  /*if (item["items"] == undefined) {
-                      tmp.push([0, "0", "0", 0]);
-                  } else {
-                      tmp.push(item[this.infoTags[i]]);
-                  }*/
 
                   console.log(item)
 
@@ -63,6 +55,38 @@ export class ThankYouPage implements OnInit {
   ngOnInit() {
   }
 
+  async share() {
+      const actionSheet = await this.actionSheetController.create({
+          buttons: [{
+              text: 'WhatsApp',
+              icon: 'logo-whatsapp',
+              handler: () => {
 
+              }
+           },{
+              text: 'Instgram',
+              icon: 'logo-instagram',
+              handler: () => {
+                  console.log('Cancel clicked');
+              }
+          }, {
+              text: 'Twitter',
+              icon: 'logo-twitter',
+              handler: () => {
+                  console.log('Cancel clicked');
+              }
+          }, {
+              text: 'Abbrechen',
+              icon: 'close',
+              role: 'cancel',
+              handler: () => {
+                  console.log('Cancel clicked');
+              }
+          }]
+      });
+      await actionSheet.present();
+
+      //this.socialSharing.share()
+  }
 
 }

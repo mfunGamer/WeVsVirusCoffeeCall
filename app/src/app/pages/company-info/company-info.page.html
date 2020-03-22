@@ -14,7 +14,8 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <img id="pic" align="center" src="{{companyInformations.getCompanyMainPicture()}}" alt="Kein Bild vorhanden.">
+        <img id="pic" align="center" src="{{companyInformations.getCompanyMainPicture()}}"
+             alt="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg">
       </ion-col>
     </ion-row>
 
@@ -29,22 +30,23 @@
     <ion-row>
       <ion-col>
         <div>
-          <h3>Ort</h3>
+          <h3 id="loc">Ort</h3>
           {{companyInformations.getCompanyLocation()}}
         </div>
 
       </ion-col>
       <ion-col>
         <div>
-          <h3>Kontakt</h3>
+          <h3 id="cont">Kontakt</h3>
           {{companyInformations.getCompanyContact()}}
         </div>
 
       </ion-col>
     </ion-row>
 
-    <ion-row>
-      <h2>{{infoMessage}}</h2>
+    <ion-row><h2>
+      <h2 id="infoMessage">Hinweis</h2>
+      {{infoMessage}}</h2>
     </ion-row>
 
   </ion-grid>
@@ -59,7 +61,7 @@
   <!-- List of Text Items -->
   <ion-item *ngFor="let iter of all_articles">
     <ion-col>
-      <img id="thumbn" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      <img id="thumbn" src="{{iter.getItemIcon()}}">
     </ion-col>
 
     <ion-col align="left">

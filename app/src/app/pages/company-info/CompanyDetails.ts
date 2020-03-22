@@ -10,15 +10,17 @@ export class CompanyDetails {
     public tyMsg:string;
     public owner:string;
     public companyTyp:string;
-    public lat: string;
-    public long: string;
+    public lat: number;
+    public long: number;
     public items:any;
 
     public contact:string;
     public location:string;
     public mainPicture:any;
 
-
+    /**["id", "name", "email", "description", "reason", "img_url", "paypal", "thank_you_msg", "owner", "company_type", "lat", "lon", "items"]
+     * [0,     1,         2,          3,        4,         5,         6,          7,            8,          9,          10,    11,     12]
+     * */
     constructor(informations) {
 
         this.id = informations[0];
@@ -27,14 +29,13 @@ export class CompanyDetails {
         this.description = informations[3];
         this.reason = informations[4];
         this.img_url = informations[5];
-        this.icon = informations[6];
-        this.ppAdress = informations[7];
-        this.tyMsg = informations[8];
-        this.owner = informations[9];
-        this.companyTyp = informations[10];
-        this.lat = informations[11];
-        this.long = informations[12];
-        this.items = informations[13];
+        this.ppAdress = informations[6];
+        this.tyMsg = informations[7];
+        this.owner = informations[8];
+        this.companyTyp = informations[9];
+        this.lat = informations[10];
+        this.long = informations[11];
+        this.items = informations[12];
     }
 
 
@@ -100,7 +101,7 @@ export class CompanyDetails {
     }
 
     getCompanyLocation() {
-        return this.location;
+        return "LAT: " + this.lat + ", LON: " + this.long;
     }
 
     getCompanyMainPicture() {
