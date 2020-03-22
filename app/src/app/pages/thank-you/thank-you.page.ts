@@ -85,8 +85,6 @@ export class ThankYouPage implements OnInit {
           }]
       });
       await actionSheet.present();
-
-      //this.socialSharing.share()
   }
 
 }
