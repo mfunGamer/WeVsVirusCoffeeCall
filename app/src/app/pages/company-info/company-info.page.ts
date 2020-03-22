@@ -3,6 +3,9 @@ import {CompanyDetails} from "./CompanyDetails";
 import {Items} from "./Items";
 import set = Reflect.set;
 import {connectableObservableDescriptor} from "rxjs/internal/observable/ConnectableObservable";
+import {PayPal, PayPalConfiguration, PayPalPayment} from '@ionic-native/paypal/ngx';
+import {ActionSheetController} from '@ionic/angular';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-company-info',
@@ -19,7 +22,7 @@ export class CompanyInfoPage implements OnInit {
 
   public companyInformations : CompanyDetails;
 
-  constructor() {
+  constructor(public actionSheetController: ActionSheetController, private payPal: PayPal, public router: Router) {
 
     this.total_sum = 0;
     this.total_sum_2_string = "0";
@@ -44,7 +47,7 @@ export class CompanyInfoPage implements OnInit {
       /*console.log(this.getSpecificItem());*/
   }
 
-  checkOrder() {
+  async checkOrder() {
     if(this.added_articles.length < 1) {
       alert("STOP RIGHT THERE CRIMINAL. U HAVE NO ITEMS!")
     } else {
@@ -55,7 +58,47 @@ export class CompanyInfoPage implements OnInit {
         tmp_arr.push("(" + this.added_articles[k].getItemName() + ", " + this.added_articles[k].getItemValue().toFixed(2) + "€)")
       }
       console.log(tmp_arr);
+      const actionSheet = await this.actionSheetController.create({
+        header: 'Zahlungsmethode wählen',
+        buttons: [{
+          text: 'PayPal',
+          handler: () => {
+            this.payPal.init( {
+              PayPalEnvironmentProduction: '',
+              PayPalEnvironmentSandbox: 'ATrKos7gH-abX4fJ5CmkrByTvT9bxIYNBdsKNfceJ06_9nKvIvwm8cPPB6dzUBrjknAkFnbxhWLi8vgi'
+            }).then(() => {
+              this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration( {
+                acceptCreditCards: false,
+                languageOrLocale: 'de-de',
+                merchantName: 'WeLoveLocal',
+                merchantPrivacyPolicyURL: '',
+                merchantUserAgreementURL: ''
+              })).then(() => {
+                const payment = new PayPalPayment(this.total_sum_2_string, 'EUR', this.companyInformations.getCompanyName(), 'Sale');
+                payment.payeeEmail = 'sb-pksp61235045@personal.example.com';
+                this.payPal.renderSinglePaymentUI(payment).then(() => {
+                  console.log('Payment successful');
+                  this.router.navigateByUrl('/thank-you');
+                }, () => {
+                  console.log('Render error');
+                });
+              }, () => {
 
+              });
+            }, () => {
+
+            });
+          }
+        }, {
+          text: 'Abbrechen',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }]
+      });
+      await actionSheet.present();
     }
   }
 
