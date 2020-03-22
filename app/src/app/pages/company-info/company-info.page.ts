@@ -6,7 +6,7 @@ import {connectableObservableDescriptor} from "rxjs/internal/observable/Connecta
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {NavController} from "@ionic/angular";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, NavigationExtras, Router} from "@angular/router";
 
 import {PayPal, PayPalConfiguration, PayPalPayment} from '@ionic-native/paypal/ngx';
 import {ActionSheetController} from '@ionic/angular';
@@ -109,7 +109,6 @@ export class CompanyInfoPage implements OnInit {
                 payment.payeeEmail = 'sb-pksp61235045@personal.example.com';
                 this.payPal.renderSinglePaymentUI(payment).then(() => {
                   console.log('Payment successful');
-                  this.router.navigateByUrl('/thank-you');
                 }, () => {
                   console.log('Render error');
                 });
@@ -119,6 +118,14 @@ export class CompanyInfoPage implements OnInit {
             }, () => {
 
             });
+            const navigationExtras: NavigationExtras = {state: {
+                    name: this.companyInformations.getCompanyName(),
+                    tyMsg: this.companyInformations.getCompanyTyMsg(),
+                    image: this.companyInformations.getCompanyMainPicture(),
+                    amount: this.total_sum_2_string
+
+                }}
+            this.router.navigateByUrl('/thank-you', navigationExtras);
           }
         }, {
           text: 'Abbrechen',

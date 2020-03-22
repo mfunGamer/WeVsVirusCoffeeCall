@@ -106,4 +106,8 @@ export class CompanyDetails {
     getCompanyMainPicture() {
         return this.img_url;
     }
+
+    getCompanyTyMsg() {
+        return this.tyMsg;
+    }
 }

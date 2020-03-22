@@ -9,8 +9,11 @@ import {CompanyDetails} from "../company-info/CompanyDetails";
 })
 export class ThankYouPage implements OnInit {
 
-  public companyInformations: CompanyDetails;
   public companyData: any;
+  public companyName: string;
+  public companyTy: string;
+  public companyImage: string;
+  public amount: string;
 
     public infoTags = ["id", "name", "email", "description", "reason", "img_url", "paypal", "thank_you_msg",
         "owner", "company_type", "lat", "lon", "items"];
@@ -22,30 +25,32 @@ export class ThankYouPage implements OnInit {
 
               /* console.log("in constructor: " + this.companyData); */
 
-              let tmp = [];
-              let iter = [];
+
+              let count = 0;
 
               for (const key in this.companyData) {
                   const item: string = this.companyData[key];
 
-                  for (let i = 0; i < this.infoTags.length; i++) {
+                  /*if (item["items"] == undefined) {
+                      tmp.push([0, "0", "0", 0]);
+                  } else {
+                      tmp.push(item[this.infoTags[i]]);
+                  }*/
 
-                      if (this.infoTags[i] == "items") {
+                  console.log(item)
 
-                          if (item["items"] == undefined) {
-                              tmp.push([0, "0", "0", 0]);
-                          } else {
-                              tmp.push(item[this.infoTags[i]]);
-                          }
-                      } else {
-                          tmp.push(item[this.infoTags[i]]);
-                      }
+                  if (count == 0) {
+                    this.companyName = item;
+                  } else if (count == 1) {
+                    this.companyTy = item;
+                  } else if (count == 2){
+                    this.companyImage = item;
+                  } else {
+                    this.amount = item;
                   }
+                  count++;
+
               }
-
-              console.log(tmp);
-
-              this.companyInformations = new CompanyDetails();
 
 
 
