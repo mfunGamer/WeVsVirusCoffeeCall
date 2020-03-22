@@ -90,7 +90,7 @@ async function createCompanyHandler(req,res){
                 location) 
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, ST_SetSRID(ST_Point($13, $14), 4326)::geography) 
             RETURNING id`, 
-            [bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city, lon, lat]);
+            [bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city, bd.type, bd.owner, lon, lat]);
         //Then add all items to the company
         await Promise.all(bd.itemids.map(itemID => db.none(`INSERT INTO company_offers_item (company_id, item_id) VALUES ($1 , $2)`, [id.id, itemID])));
         res.send("Success!");
