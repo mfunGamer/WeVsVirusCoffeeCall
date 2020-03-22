@@ -21,10 +21,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/data-protection/data-protection.module').then( m => m.DataProtectionPageModule)
   },
   {
-    path: 'settings',
-    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
-  },
-  {
     path: 'company-info',
     loadChildren: () => import('./pages/company-info/company-info.module').then( m => m.CompanyInfoPageModule)
   },
