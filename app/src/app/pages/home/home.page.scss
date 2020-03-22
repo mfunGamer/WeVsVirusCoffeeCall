@@ -2,39 +2,10 @@ ion-content{
   --background: var(--color_ice);
 }
 
-#container {
-  text-align: center;
-
+ion-fab{
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-
-  color: var(--color_petrol);
-
-  display: inline-block;
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  margin: 0;
-}
-
-span {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-#container a {
-  text-decoration: none;
+  bottom: 3%;
+  left: 3%;
 }
 
 ion-content ion-toolbar {

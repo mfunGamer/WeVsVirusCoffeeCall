@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start">Zurück</ion-button>
+
+    <ion-title>Details</ion-title>
+    <ion-button slot="end" (click)="checkOrder()">
+      <ion-icon name="cart-outline"></ion-icon>
+      <ion-label>{{total_sum_2_string}}€</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img id="pic" align="center" src="{{companyInformations.getCompanyMainPicture()}}" alt="Kein Bild vorhanden.">
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col><h1 id="text1">{{companyInformations.getCompanyName()}}</h1></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col><h4 id="text2">{{companyInformations.getCompanyDescription()}}</h4></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div>
+          <h3>Ort</h3>
+          {{companyInformations.getCompanyLocation()}}
+        </div>
+
+      </ion-col>
+      <ion-col>
+        <div>
+          <h3>Kontakt</h3>
+          {{companyInformations.getCompanyContact()}}
+        </div>
+
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+    <ion-item-divider>
+      <ion-label id="menu_text">
+        Menü
+      </ion-label>
+    </ion-item-divider>
+
+  <!-- List of Text Items -->
+    <ion-item *ngFor="let iter of all_articles">
+      <ion-col>
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-col>
+
+      <ion-col>
+        <h4>{{iter.getItemName()}}</h4>
+      </ion-col>
+
+      <ion-col><h4>{{iter.getItemValue().toFixed(2)}} €</h4></ion-col>
+
+      <ion-col align="right">
+        <ion-button (click)="addArticles(iter.getItemValue().toFixed(2), iter)">In den Warenkorb legen</ion-button>
+      </ion-col>
+
+    </ion-item>
+
+</ion-content>
+
+

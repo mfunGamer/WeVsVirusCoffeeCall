@@ -1,42 +1,10 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
 
 <ion-content >
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <span><strong >Ready to create an app?</strong><br>
-    <ion-text>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></ion-text></span>
-  </div>
-
-
-  <ion-button (click)="exampleMethod()">Spanisch?</ion-button>
-
-
-  <!-- Emin -->
-  <ion-button expand="block" routerLink="/settings" routerDirection="forward">
-    GoTo Settings
-  </ion-button>
-
-  <ion-button expand="block" routerLink="/create-account" routerDirection="forward">
-    GoTo CreateAccount
-  </ion-button>
-
-  <ion-button expand="block" routerLink="/home" routerDirection="root">
-    GoTo Root Kappa
-  </ion-button>
+  <ion-fab>
+    <ion-fab-button (click)="onClick()"><ion-icon name="layers-outline"></ion-icon></ion-fab-button>
+  </ion-fab>
+  <div id="map" style="height:100%;"></div>
 
   <ion-button expand="block" routerLink="/payment" routerDirection="forward">
     Bezahlen

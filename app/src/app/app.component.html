@@ -2,23 +2,24 @@
   <ion-menu side="start" menuId="first" contentId="content1">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Navigate</ion-title>
+        <ion-title color="#A10B2C">Navigate</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
+
       <ion-list>
-        <ion-item routerLink="home" routerDirection="root">
-          <ion-icon name="home-outline" slot="start"></ion-icon>
-          Home
-        </ion-item>
         <ion-menu-toggle auto-hide="true" *ngFor="let pages of navigate">
-          <ion-item [routerLink]="pages.url" routerDirection="forward">
+          <ion-item [routerDirection]="'root'" [routerLink]="[pages.url]">
             <ion-icon [name]="pages.icon" slot="start"></ion-icon>
             {{pages.title}}
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
+
     </ion-content>
+
+    <ion-fab class="homeButton"><ion-fab-button *ngIf="isOnHomePage()" (click)="onHomeButton()"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-fab-button></ion-fab>
+
   </ion-menu>
   <ion-router-outlet id="content1"></ion-router-outlet>
 </ion-app>

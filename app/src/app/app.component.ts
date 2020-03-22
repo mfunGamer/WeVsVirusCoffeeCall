@@ -1,8 +1,9 @@
 import { Component} from '@angular/core';
-import { Platform } from '@ionic/angular';
+import {MenuController, Platform} from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,34 +13,55 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
 
-    navigate : any;
+    navigate: any;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-
+    private router: Router,
+    private menu: MenuController
   ) {
 
       this.sideMenu();
-    this.initializeApp();
+      this.initializeApp();
 
   }
 
-  sideMenu(){
+  sideMenu() {
       this.navigate =
           [
               {
-                  title : "Create Account",
-                  url   : "create-account",
-                  icon  : "key-outline"
+                  title : 'Home',
+                  url   : 'home',
+                  icon  : 'home-outline'
+              },
+              {
+                  title : 'Create Account',
+                  url   : 'create-account',
+                  icon  : 'key-outline'
+              },
+              {
+                  title : "RewardHistory",
+                  url   : "reward-history",
+                  icon  : "trophy-outline"
+              },
+              {
+                  title : "LegalNotice",
+                  url   : "legal-notice",
+                  icon  : "alert-circle-outline"
+              },
+              {
+                  title : "DataProtection",
+                  url   : "data-protection",
+                  icon  : "shield-checkmark-outline"
               },
               {
                   title : "Settings",
                   url   : "settings",
                   icon  : "settings-outline"
               },
-          ]
+          ];
   }
 
 
@@ -49,4 +71,14 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+
+  isOnHomePage(): boolean {
+      const parts = this.router.url.split('/');
+      return parts[parts.length - 1] === 'home';
+  }
+
+  onHomeButton() {
+      this.menu.close();
+  }
+
 }
