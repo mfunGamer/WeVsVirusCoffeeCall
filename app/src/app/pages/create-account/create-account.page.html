@@ -2,50 +2,46 @@
 
   <ion-grid style="height: 100%; background: var(--color_ice); color: var(--color_cherry)">
 
-    <ion-row class="ion-align-items-end" style="height: 20%">
-      <!-- Text -->
+    <ion-row style="height: 10%" >
+      <ion-col>
+        <ion-fab horizontal="end">
+          <ion-fab-button size="small" color="light" (click)="presentAlert()">
+            <ion-icon name="information" style="color: var(--color_cherry)"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height: 200px">
+      <ion-col class="ion-align-items-center" style="height: 100%; text-align: center">
+        <ion-avatar class="avatar" style="height: 200px; width: 200px; background: var(--color_petrol)">
+          <img *ngIf="!fileUrl" src="assets/images/char1.png" height="100%"/>
+          <img *ngIf="fileUrl" src="{{fileUrl}}"/>
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height: 15%">
+      <!-- Picture upload -->
       <ion-col></ion-col>
-      <ion-col class="ion-justify-content-center" size="10" style="text-align: center">
-      <ion-text class="one">Zuerst benötigen wir deinen Namen und ein Bild von dir, damit dich deine Freunde wiedererkennen können.</ion-text>
+      <ion-col class="ion-justify-content-center" style="text-align: center">
+        <ion-button shape="round" style="text-align: center; --background: var(--color_petrol); color: var(--color_cherry)" (click)="updateImage()">Bild hochladen</ion-button>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
 
-    <ion-row style="height: 10%">
+
+    <ion-row style="height: 30%">
       <!-- Name input -->
       <ion-col></ion-col>
       <ion-col size="10">
 
-      <ion-input style="text-align: center; background: var(--color_petrol) " placeholder="Gib hier bitte deinen Namen ein" [(ngModel)]="username"></ion-input>
+      <ion-input shape="round" style="text-align: center; background: var(--color_petrol) " placeholder="Gib hier bitte deinen Namen ein *" [(ngModel)]="username"></ion-input>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
 
-    <ion-row class="ion-align-items-end" style="height: 20%; text-align: center">
-      <ion-col></ion-col>
-      <ion-col size="10" >
-        <ion-text>Falls du nach deiner Spende ein personalisiertes Bild zum Teilen erhalten möchtest, kannst du hier ein Foto hinterlegen:</ion-text>
-      </ion-col>
-      <ion-col></ion-col>
-    </ion-row>
 
-    <ion-row style="height: 20%">
-      <ion-col></ion-col>
-      <ion-col class="ion-align-items-center" style="height: 100%; text-align: center" size="10" >
-        <img *ngIf="!fileUrl" src="assets/images/char1.png" height="100%"/>
-        <img *ngIf="fileUrl" src="{{fileUrl}}"/>
-      </ion-col>
-      <ion-col></ion-col>
-    </ion-row>
-
-    <ion-row style="height: 10%">
-      <!-- Picture upload -->
-      <ion-col></ion-col>
-      <ion-col class="ion-justify-content-center" style="text-align: center">
-    <ion-button style="text-align: center; --background: var(--color_petrol); color: var(--color_cherry)" (click)="updateImage()">Bild hochladen</ion-button>
-      </ion-col>
-      <ion-col></ion-col>
-    </ion-row>
 
     <ion-row class="ion-align-items-center" style="height: 10%">
       <!-- Data protection prompt -->
