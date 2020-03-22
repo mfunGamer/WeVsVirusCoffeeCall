@@ -24,6 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {UserDataService} from './services/UserDataService';
 import {IonicStorageModule} from '@ionic/storage';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -56,6 +57,7 @@ import {IonicStorageModule} from '@ionic/storage';
       StatusBar,
       UserDataService,
       SplashScreen,
+      SocialSharing,
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
