@@ -23,11 +23,11 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
-  },  {
-    path: 'payment',
-    loadChildren: () => import('./pages/payment/payment.module').then( m => m.PaymentPageModule)
   },
-
+  {
+    path: 'company-info',
+    loadChildren: () => import('./pages/company-info/company-info.module').then( m => m.CompanyInfoPageModule)
+  },
 
 ];
 
