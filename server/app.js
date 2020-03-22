@@ -5,6 +5,7 @@ const database = require("./src/db.js");
 const utility = require("./src/utility.js")
 const config = require("config");
 const cors = require("cors");
+const morgan = require("morgan");
 
 //Loading Config
 conf = config.get('serverConf');
@@ -22,6 +23,7 @@ const itemHandler = require("./src/item.js");
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(morgan("combined"));
 
 app.get("*", utility.validateParams);
 app.post("*", utility.validateBody);
