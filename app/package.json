@@ -30,6 +30,7 @@
     "com.paypal.cordova.mobilesdk": "^3.5.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
+    "sweetalert2": "^9.10.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },

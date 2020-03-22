@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PaymentPage } from './payment.page';
 import {PayPal} from '@ionic-native/paypal/ngx';
+import {ActionSheetController} from '@ionic/angular';
 
 const routes: Routes = [
   {
