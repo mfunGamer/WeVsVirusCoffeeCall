@@ -53,7 +53,8 @@
         <ion-checkbox style="--background: var(--color_ice); --border-color: var(--color_cherry); --background-checked: var(--color_petrol); --border-color-checked: var(--color_petrol)" [(ngModel)]="datenschutz" (ionChange)="datenschutzChange()"></ion-checkbox>
       </ion-col>
       <ion-col size="10">
-        <ion-text class="one">Ich habe die <a style="color: var(--color_petrol)" href="/data-protection">Datenschutzbestimmungen</a> gelesen und akzeptiere sie.</ion-text>
+       <!-- <ion-text class="one">Ich habe die <a style="color: var(--color_petrol)" href="/data-protection">Datenschutzbestimmungen</a> gelesen und akzeptiere sie.</ion-text> -->
+        <ion-button (click)="openModal()" expand="full">OPEN MODAL TEST</ion-button>
       </ion-col>
       <ion-col>
 

@@ -28,6 +28,11 @@ const routes: Routes = [
     path: 'company-info',
     loadChildren: () => import('./pages/company-info/company-info.module').then( m => m.CompanyInfoPageModule)
   },
+  {
+    path: 'data-protection-modal',
+    loadChildren: () => import('./modals/data-protection-modal/data-protection-modal.module').then( m => m.DataProtectionModalPageModule)
+  },
+
 
 ];
 
