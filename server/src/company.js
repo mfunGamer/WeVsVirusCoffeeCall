@@ -17,13 +17,19 @@ async function getCompanyHandler(req, res, next){
         company = await db.oneOrNone(`SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg, owner, company_type, lat, lon FROM company WHERE id = $1 AND approved = TRUE`,req.query.id);
         items = await db.manyOrNone(`SELECT name, icon_url, price, id FROM item JOIN company_offers_item ON item.id = company_offers_item.item_id WHERE company_id = $1`, req.query.id);
 
+        if(company == undefined || company == null){
+            res.status = 400;
+            res.send("Couldnt find company. Maybe it has not been approved yet.");
+            return;
+        }
+        
         company.items = items;
         res.json(company);
     }
     catch (e){
         console.log(e);
-        res.status = 400;
-            res.send("500 Internal Server Error");
+        res.status = 500;
+        res.send("500 Internal Server Error");
     }
 }
 
@@ -47,7 +53,7 @@ async function createCompanyHandler(req,res){
             "owner"
         ],req);
         if(missingParam) {
-            res.status = 400;
+            res.status = 500;
             res.send("400 Bad Request: Missing parameter " + missingParam + ".")
             return
         }
@@ -99,7 +105,7 @@ async function createCompanyHandler(req,res){
     }
     catch (e){
         console.log(e);
-        res.status = 400;
+        res.status = 500;
             res.send("500 Internal Server Error");
     }
 }
@@ -154,7 +160,7 @@ async function getCompanyListHandler(req,res){
     }
     catch (e){
     console.log(e);
-    res.status = 400;
+    res.status = 500;
         res.send("500 Internal Server Error");
     }
 }
