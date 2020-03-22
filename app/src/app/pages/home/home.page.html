@@ -1,8 +1,12 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
 
 <ion-content >
-  <ion-fab>
+  <ion-fab class="ionfabbl">
     <ion-fab-button (click)="onClick()"><ion-icon name="layers-outline"></ion-icon></ion-fab-button>
+  </ion-fab>
+
+  <ion-fab class="ionfabbr">
+    <ion-fab-button (click)="onOpenInfo()"><ion-icon name="help-outline"></ion-icon></ion-fab-button>
   </ion-fab>
   <div id="map" style="height:100%;"></div>
 

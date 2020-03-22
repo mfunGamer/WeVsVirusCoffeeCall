@@ -33,6 +33,11 @@ const routes: Routes = [
     loadChildren: () => import('./modals/data-protection-modal/data-protection-modal.module').then( m => m.DataProtectionModalPageModule)
   },
 
+  {
+    path: 'thank-you',
+    loadChildren: () => import('./pages/thank-you/thank-you.module').then( m => m.ThankYouPageModule)
+  },
+
 
 ];
 

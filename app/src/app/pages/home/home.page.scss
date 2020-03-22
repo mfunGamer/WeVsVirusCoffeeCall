@@ -2,10 +2,16 @@ ion-content{
   --background: var(--color_ice);
 }
 
-ion-fab{
+.ionfabbl{
   position: absolute;
   bottom: 3%;
   left: 3%;
+}
+
+.ionfabbr{
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
 }
 
 ion-content ion-toolbar {
