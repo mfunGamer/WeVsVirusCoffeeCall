@@ -1,0 +1,76 @@
+<ion-content>
+
+  <ion-grid style="height: 100%; background: var(--color_ice); color: var(--color_cherry)">
+
+    <ion-row style="height: 10%" >
+      <ion-col>
+        <ion-fab horizontal="end">
+          <ion-fab-button size="small" color="light" (click)="presentAlert()">
+            <ion-icon name="information" style="color: var(--color_cherry); "></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height: 30%">
+      <ion-col class="ion-align-items-center" style="height: 100%; text-align: center">
+        <ion-avatar class="avatar" style="height: 200px; width: 200px; background: var(--color_petrol)">
+          <img *ngIf="!fileUrl" src="assets/images/char1.png" height="100%"/>
+          <img *ngIf="fileUrl" src="{{fileUrl}}"/>
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height: 5%">
+      <ion-col>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height: 15%">
+      <!-- Picture upload -->
+      <ion-col></ion-col>
+      <ion-col class="ion-justify-content-center" style="text-align: center">
+        <ion-button shape="round" style="text-align: center; --background: var(--color_petrol); color: var(--color_cherry)" (click)="updateImage()">Bild hochladen</ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+
+    <ion-row style="height: 10%">
+      <!-- Name input -->
+      <ion-col></ion-col>
+      <ion-col size="10">
+
+      <ion-input shape="round" style="text-align: center; background: var(--color_petrol) " placeholder="Gib hier bitte deinen Namen ein *" [(ngModel)]="username"></ion-input>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+
+
+    <ion-row class="ion-align-items-center" style="height: 20%">
+      <!-- Data protection prompt -->
+      <ion-col class="ion-align-items-right" style="text-align: right">
+        <ion-checkbox style="--background: var(--color_ice); --border-color: var(--color_cherry); --background-checked: var(--color_petrol); --border-color-checked: var(--color_petrol)" [(ngModel)]="datenschutz" (ionChange)="datenschutzChange()"></ion-checkbox>
+      </ion-col>
+        <ion-col size="10">
+            <ion-text class="one">Ich habe die</ion-text>
+            <ion-button size="small" style="text-align: center; --background: var(--color_petrol);" (click)="openModal()">Datenschutzbestimmungen </ion-button>
+            <ion-text class="one"> gelesen und akzeptiere sie.</ion-text>
+        </ion-col>
+      <ion-col>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height: 10%" class="ion-justify-content-center" style="text-align: center">
+      <ion-col>
+      <ion-button style="color: var(--color_petrol); --border-color: var(--color_petrol)" expand="block" fill="outline" [class.button-disabled]="isButtonEnabled()" (click)="weiterPressed()">Weiter</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>

@@ -2,8 +2,11 @@
 // http://ionicframework.com/docs/theming/
 
 :root {
-  --color_pcolor: hsla(27, 42%, 76%, 1);
-  --color_scolor: hsla(9, 76%, 35%, 1);
+
+  --color_ice: #F5FCFC;
+  --color_petrol: #8ED1CC;
+  --color_cherry: #A10B2C;
+
   --color_positive: #27AE60;
   --color_negative: #EB5757;
 
@@ -12,12 +15,17 @@
   --color_gray_light: #808080;
   --color_gray_background: #eaeaea;
 
-  --color_pcolor_darker: hsla(27, 42%, 71%, 1);
-  --color_pcolor_darker_2: hsla(27, 42%, 66%, 1);
-  --color_pcolor_darker_3: hsla(27, 42%, 61%, 1);
-  --color_scolor_darker: hsla(9, 76%, 30%, 1);
-  --color_scolor_darker_2: hsla(9, 76%, 25%, 1);
-  --color_scolor_darker_3: hsla(9, 76%, 20%, 1);
+  --color_ice_darker: #ebf9f9;
+  --color_ice_darker_2: #d8f3f3;
+  --color_ice_darker_3: #c4eded;
+
+  --color_petrol_darker: #80cbc6;
+  --color_petrol_darker_2: #6ec4be;
+  --color_petrol_darker_3: #5cbcb6;
+
+  --color_cherry_darker: #8f0a27;
+  --color_cherry_darker_2: #770820;
+  --color_cherry_darker_3: #5f071a;
 }
 
 /** Ionic CSS Variables **/

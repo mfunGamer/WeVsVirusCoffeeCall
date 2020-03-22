@@ -1,3 +1,28 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="first" contentId="content1">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class = "logo">
+          <img alt="WeLL" height="40"   src="assets/images/WeLL_BlackTypo_keinText.png" >
+        </ion-title>
+        <ion-title>WeLoveLocal</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+
+      <ion-list>
+        <ion-menu-toggle auto-hide="true" *ngFor="let pages of navigate">
+          <ion-item [routerDirection]="'root'" [routerLink]="[pages.url]">
+            <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+            {{pages.title}}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+    </ion-content>
+
+    <ion-fab class="homeButton"><ion-fab-button *ngIf="isOnHomePage()" (click)="onHomeButton()"><ion-icon name="arrow-back-circle-outline"></ion-icon></ion-fab-button></ion-fab>
+
+  </ion-menu>
+  <ion-router-outlet id="content1"></ion-router-outlet>
 </ion-app>
