@@ -4,6 +4,7 @@ import {NavigationExtras, Router} from '@angular/router';
 import { Map, tileLayer, marker, icon } from 'leaflet';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,8 @@ export class HomePage {
               public plt: Platform,
               public router: Router,
               public geolocation: Geolocation,
-              private menu: MenuController
+              private menu: MenuController,
+              public alertController: AlertController
               ) {
   }
 
@@ -39,8 +41,15 @@ export class HomePage {
     this.menu.open();
   }
 
-  onOpenInfo() {
-
+  async onOpenInfo() {
+    const alert = await this.alertController.create({
+      header: 'WeLLcome!',
+      message:
+          'Mit dieser App unterstützt du deine Lieblingsläden in der Nähe und kannst Freunde online zu einem Lokalbesuch einladen.<br>' +
+          'Wir erheben keine Gebühren, sodass dein Beitrag vollständig bei den Ladenbesitzern ankommt (ggfs. abzüglich PayPal Gebühren).',
+      buttons: ['Finde ich super!']
+    });
+    await alert.present();
   }
 
   initMap() {

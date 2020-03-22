@@ -1,15 +1,47 @@
 export class CompanyDetails {
     public id:any;
-    public description:string;
     public name:string;
-    public items:any;
+    public email:string;
+    public description:string;
+    public reason:string;
+    public img_url:string;
     public icon:any;
+    public ppAdress:string;
+    public tyMsg:string;
+    public owner:string;
+    public companyTyp:string;
+    public lat: string;
+    public long: string;
+    public items:any;
+
     public contact:string;
     public location:string;
     public mainPicture:any;
 
+
+    constructor(informations) {
+
+        this.id = informations[0];
+        this.name = informations[1];
+        this.email = informations[2];
+        this.description = informations[3];
+        this.reason = informations[4];
+        this.img_url = informations[5];
+        this.icon = informations[6];
+        this.ppAdress = informations[7];
+        this.tyMsg = informations[8];
+        this.owner = informations[9];
+        this.companyTyp = informations[10];
+        this.lat = informations[11];
+        this.long = informations[12];
+        this.items = informations[13];
+    }
+
+
+    /*
     constructor() {
     }
+    */
 
     setCompanyMainPicture(pic) {
         this.mainPicture = pic;
@@ -64,7 +96,7 @@ export class CompanyDetails {
     }
 
     getCompanyContact() {
-        return this.contact;
+        return this.email;
     }
 
     getCompanyLocation() {
@@ -72,6 +104,6 @@ export class CompanyDetails {
     }
 
     getCompanyMainPicture() {
-        return this.mainPicture;
+        return this.img_url;
     }
 }
