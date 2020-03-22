@@ -11,7 +11,7 @@ export class UserDataService {
     }
 
     saveUserName(username: string) {
-        this.storage.set('username','username');
+        this.storage.set('username', username);
 
     }
 
@@ -22,12 +22,12 @@ export class UserDataService {
     }
 
     saveProfilePictureURL(url: string) {
-        this.storage.set('profilePictureURL','url');
+        this.storage.set('profilePictureURL', url);
 
     }
 
     getProfilePictureURL(): Promise<string> {
-        return this.storage.get("profilePictureURL");
+        return this.storage.get('profilePictureURL');
     }
 
 }
