@@ -74,7 +74,7 @@ async function createCompanyHandler(req,res){
             json: true
         });
         
-        if (!locInformation){
+        if (!locInformation[0]){
             res.status(400);
             res.send("The addres you provided could not be found.");
             return;
