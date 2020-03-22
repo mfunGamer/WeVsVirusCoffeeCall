@@ -1,28 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { ModalController} from "@ionic/angular";
+import {DataProtectionPage} from "../../pages/data-protection/data-protection.page";
+
 @Component({
-  selector: 'app-data-protection',
-  templateUrl: './data-protection.page.html',
-  styleUrls: ['./data-protection.page.scss'],
+  selector: 'app-data-protection-modal',
+  templateUrl: './data-protection-modal.page.html',
+  styleUrls: ['./data-protection-modal.page.scss'],
 })
-export class DataProtectionPage implements OnInit {
+export class DataProtectionModalPage implements OnInit {
 
-  public dataProtectionInfo;
+  public dataProtectionModalText;
 
-  constructor() {
+  constructor(private modalController: ModalController ) {
 
-      this.setDataProtectionInfo();
-  }
-
-  ngOnInit() {
-  }
-
-  getDataProtectionInfo(){
-      return this.dataProtectionInfo;
-  }
-
-  setDataProtectionInfo(){
-
-  this.dataProtectionInfo = [
+    this.dataProtectionModalText = [
       "Datenschutzerklärung",
       "Wir freuen uns sehr über Ihr Interesse an unserem Unternehmen. Datenschutz hat einen besonders hohen Stellenwert für die Geschäftsleitung der Enactus Hamburg e.V.. Eine Nutzung der Internetseiten der Enactus Hamburg e.V. ist grundsätzlich ohne jede Angabe personenbezogener Daten möglich. Sofern eine betroffene Person besondere Services unseres Unternehmens über unsere Internetseite in Anspruch nehmen möchte, könnte jedoch eine Verarbeitung personenbezogener Daten erforderlich werden. Ist die Verarbeitung personenbezogener Daten erforderlich und besteht für eine solche Verarbeitung keine gesetzliche Grundlage, holen wir generell eine Einwilligung der betroffenen Person ein.Die Verarbeitung personenbezogener Daten, beispielsweise des Namens, der Anschrift, E-Mail-Adresse oder Telefonnummer einer betroffenen Person, erfolgt stets im Einklang mit der Datenschutz-Grundverordnung und in Übereinstimmung mit den für die Enactus Hamburg e.V. geltenden landesspezifischenDatenschutzbestimmungen. Mittels dieser Datenschutzerklärung möchte unser Unternehmen die Öffentlichkeit über Art, Umfang und Zweck der von uns erhobenen, genutzten und verarbeiteten personenbezogenen Daten informieren. Ferner werden betroffene Personen mittels dieser Datenschutzerklärung über die ihnen zustehenden Rechte aufgeklärt.Die Enactus Hamburg e.V. hat als für die Verarbeitung Verantwortlicher zahlreiche technische und organisatorische Maßnahmen umgesetzt, um einen möglichst lückenlosen Schutz der über diese Internetseite verarbeiteten personenbezogenen Daten sicherzustellen. Dennoch können Internetbasierte Datenübertragungen grundsätzlich Sicherheitslücken aufweisen, sodass ein absoluter Schutz nicht gewährleistet werden kann. Aus diesem Grund steht es jeder betroffenen Person frei, personenbezogene Daten auch auf alternativen Wegen, beispielsweise telefonisch, an uns zu übermitteln.\n",
       "1. Begriffsbestimmungen",
@@ -112,5 +103,16 @@ export class DataProtectionPage implements OnInit {
       " \n"];
 
   }
+
+
+  ngOnInit() {
+  }
+
+
+  async closeModal(){
+    await this.modalController.dismiss();
+  }
+
+
 
 }
