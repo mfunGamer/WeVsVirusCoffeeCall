@@ -1,11 +1,23 @@
+/**
+ * All handlers that interact mainly with the company table
+ * @module company
+ */
+
 //imports
 const rp = require("request-promise")
+//Internal Modules
 const utility = require("./utility.js");
 const database = require("./db.js");
 
+//Get shared DB object
 db = database.getDB();
 
-async function getCompanyHandler(req, res, next){
+/**
+ * Handler for the 'GET /company' request. Returns a company and its items by company id.
+ * @param {*} req the request object
+ * @param {*} res the response opject
+ */
+async function getCompanyHandler(req, res){
     try {
         //Checking if all required parameters have a value
         missingParam = utility.requireParameters(["id"],req);
@@ -33,6 +45,11 @@ async function getCompanyHandler(req, res, next){
     }
 }
 
+/**
+ * Handler for the 'POST /company' request. Creates a new company in the database and adds items to it.
+ * @param {*} req the request object
+ * @param {*} res the response opject
+ */
 async function createCompanyHandler(req,res){
     try {
         //Checking if all required parameters have a value
@@ -116,6 +133,11 @@ async function createCompanyHandler(req,res){
     }
 }
 
+/**
+ * Handler for the 'GET /companylist' request. Returns a list of companies(with items) that are in a certain radius around a point.
+ * @param {*} req the request object
+ * @param {*} res the response opject
+ */
 async function getCompanyListHandler(req,res){
     try{
         //Checking if all required parameters have a value

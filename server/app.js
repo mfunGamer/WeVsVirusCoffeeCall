@@ -1,11 +1,13 @@
 //Imports
 const express = require("express");
-const bodyParser = require("body-parser");
-const database = require("./src/db.js");
-const utility = require("./src/utility.js")
 const config = require("config");
+//Middleware
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
+//Internal modules
+const database = require("./src/db.js");
+const utility = require("./src/utility.js");
 
 //Loading Config
 conf = config.get('serverConf');
@@ -21,10 +23,12 @@ database.initDB();
 const companyHandler = require("./src/company.js");
 const itemHandler = require("./src/item.js");
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(morgan("combined"));
+//External Middleware
+app.use(cors());    //Preflight Request Handling
+app.use(bodyParser.json()); //Parsing JSON
+app.use(morgan("combined"));    //Logging Requests
 
+//Making sure no query string or body has empty values.
 app.get("*", utility.validateParams);
 app.post("*", utility.validateBody);
 

@@ -1,6 +1,16 @@
-//imports
+/**
+ * All handlers that interact mainly with the items table
+ * @module item
+ */
+
+//Internal Modules
 const utility = require("./utility.js")
 
+/**
+ * Handler for the 'GET /item' request. Returns an item by id.
+ * @param {*} req the request object
+ * @param {*} res the response opject
+ */
 async function getItemsHandler(req,res){
     try {
         //Checking if all required parameters have a value
