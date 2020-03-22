@@ -1,11 +1,20 @@
 <ion-header>
   <ion-toolbar>
+    <ion-row>
+      <ion-col></ion-col>
 
-    <ion-title>Details</ion-title>
-    <ion-button slot="end" (click)="checkOrder()">
-      <ion-icon name="cart-outline"></ion-icon>
-      <ion-label>{{total_sum_2_string}}€</ion-label>
-    </ion-button>
+      <ion-col id="detail">
+        <ion-title>Details</ion-title>
+      </ion-col>
+
+      <ion-col align="right">
+        <ion-button (click)="checkOrder()">
+          <ion-icon name="cart-outline"></ion-icon>
+          <ion-label>{{total_sum_2_string}}€</ion-label>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +23,8 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <img id="pic" align="center" src="{{companyInformations.getCompanyMainPicture()}}" alt="Kein Bild vorhanden.">
+        <img id="pic" align="center" src="{{companyInformations.getCompanyMainPicture()}}"
+             alt="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg">
       </ion-col>
     </ion-row>
 
@@ -29,22 +39,23 @@
     <ion-row>
       <ion-col>
         <div>
-          <h3>Ort</h3>
+          <h3 id="loc">Ort</h3>
           {{companyInformations.getCompanyLocation()}}
         </div>
 
       </ion-col>
       <ion-col>
         <div>
-          <h3>Kontakt</h3>
+          <h3 id="cont">Kontakt</h3>
           {{companyInformations.getCompanyContact()}}
         </div>
 
       </ion-col>
     </ion-row>
 
-    <ion-row>
-      <h2>{{infoMessage}}</h2>
+    <ion-row><h2>
+      <h2 id="infoMessage">Hinweis</h2>
+      {{infoMessage}}</h2>
     </ion-row>
 
   </ion-grid>

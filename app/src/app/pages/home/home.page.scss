@@ -6,12 +6,26 @@ ion-content{
   position: absolute;
   bottom: 3%;
   left: 3%;
+
+}
+
+.ionfabbl ion-fab-button{
+  --background: var(--color_ice_darker_2);
+  --color: var(--color_cherry_darker);
+  --box-shadow: false;
 }
 
 .ionfabbr{
   position: absolute;
   bottom: 3%;
   right: 3%;
+}
+
+.ionfabbr ion-fab-button{
+  --background: var(--color_ice_darker_2);
+  --border-color: var(--color_cherry_darker);
+  --color: var(--color_cherry_darker);
+  --box-shadow: false;
 }
 
 ion-content ion-toolbar {

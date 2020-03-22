@@ -23,7 +23,7 @@ export class CompanyInfoPage implements OnInit {
 
   public info = null;
 
-  public infoMessage = "Hinweis: Der Einkauf untenstehender Waren erfolgt virtuell. " +
+  public infoMessage = "Der Einkauf untenstehender Waren erfolgt virtuell. " +
       "Jeder Betrag ihres Einkaufs wird an ihr augewähltes Lokal gespendet. " +
       "Sie unterstzützen damit, ihr Restaurant in der aktuellen Situation! :)";
 

@@ -51,7 +51,8 @@ export class HomePage {
           '<br><br>'+
           'Mit dieser App unterstützt du deine Lieblingsläden in der Nähe und kannst Freunde online zu einem Lokalbesuch einladen.<br>' +
           'Wir erheben keine Gebühren, sodass dein Beitrag vollständig bei den Ladenbesitzern ankommt (ggfs. abzüglich PayPal Gebühren).',
-      buttons: ['Finde ich super!']
+      buttons: ['Finde ich super!'],
+      cssClass: 'alerts'
     });
     await alert.present();
   }
