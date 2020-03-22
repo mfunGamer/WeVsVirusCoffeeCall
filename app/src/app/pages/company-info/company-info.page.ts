@@ -23,6 +23,10 @@ export class CompanyInfoPage implements OnInit {
 
   public info = null;
 
+  public infoMessage = "Hinweis: Der Einkauf untenstehender Waren erfolgt virtuell. " +
+      "Jeder Betrag ihres Einkaufs wird an ihr augewähltes Lokal gespendet. " +
+      "Sie unterstzützen damit, ihr Restaurant in der aktuellen Situatuiion :)";
+
   public total_sum: number = null;
   public total_sum_2_string: string;
   public all_articles: any = [];
@@ -134,21 +138,32 @@ export class CompanyInfoPage implements OnInit {
   }
 
 
+  itemList(someItems) {
+    for (const kar in someItems) {
+      const item: string = someItems[kar];
+      console.log("name: " + item["name"]);
+    }
+  }
+
+
   someFunction(inside) {
       let tmp = [];
-      let iter = [];
 
       for (const key in inside) {
         const item: string = inside[key];
+
+        console.log(item["name"]);
 
         for (let i = 0; i < this.infoTags.length; i++) {
 
           if (this.infoTags[i] == "items") {
 
             if (item["items"] == undefined) {
-              tmp.push([0, "0", "0", 0]);
+              tmp.push([0, "Kein Produkt", "Nothing", 0]);
             } else {
               tmp.push(item[this.infoTags[i]]);
+              this.itemList(item[this.infoTags[i]]);
+
             }
           } else {
             tmp.push(item[this.infoTags[i]]);
@@ -169,7 +184,7 @@ export class CompanyInfoPage implements OnInit {
         [2, "Cocktail", "some icon", 3.20],
         [3, "Bier", "some icon", 5.50],
         [4, "Bubble Tea", "some icon", 2.00],
-        [5, "Radler", "some icon", 0.20],
+        [5, "Radler", "some icon", 200.00],
         [6, "Stilles Wasser", "some icon", 0.50],
         [7, "Capri-Sun", "some icon", 6.99]
       ]);
