@@ -12,8 +12,12 @@ ion-row {
   text-align: center;
 }
 
-ion-toolbar {
+#top {
   --background: var(--color_petrol);
+}
+
+#bot {
+  --background: var(--color_cherry);
 }
 
 #text1, #text2, ion-header {

@@ -8,6 +8,8 @@ import { ThankYouPageRoutingModule } from './thank-you-routing.module';
 
 import { ThankYouPage } from './thank-you.page';
 
+import {File} from "@ionic-native/file/ngx";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,8 @@ import { ThankYouPage } from './thank-you.page';
     IonicModule,
     ThankYouPageRoutingModule
   ],
-  declarations: [ThankYouPage]
+  declarations: [ThankYouPage],
+    providers: [File]
+
 })
 export class ThankYouPageModule {}
