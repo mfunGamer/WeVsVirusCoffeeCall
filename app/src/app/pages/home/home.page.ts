@@ -5,6 +5,7 @@ import { Map, tileLayer, marker, icon } from 'leaflet';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { AlertController } from '@ionic/angular';
+import {UserDataService} from "../../services/UserDataService";
 
 @Component({
   selector: 'app-home',
@@ -13,12 +14,15 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
+  buttonPressed;
+
   constructor(public http: HttpClient,
               public plt: Platform,
               public router: Router,
               public geolocation: Geolocation,
               private menu: MenuController,
-              public alertController: AlertController
+              public alertController: AlertController,
+              private userDataService: UserDataService,
               ) {
   }
 
@@ -30,7 +34,16 @@ export class HomePage {
     // this.http.get('http://137.74.140.50:3000/items', {headers}).forEach(item => console.log(item));
 
     this.initMap();
+    this.userDataService.getUserName().then((usernameval) => {
+      if(usernameval.length>0){
+        this.userDataService.getViewedAlert().then((val) => {
+          if(!val)this.onOpenInfo()
+        }).catch(() => {
+          this.onOpenInfo()
+        });
+    }
 
+  })
   }
 
   ionViewWillLeave() {
@@ -42,6 +55,7 @@ export class HomePage {
   }
 
   async onOpenInfo() {
+
     const alert = await this.alertController.create({
       header: 'WeLLcome!',
       message:'<img alt="Bäcker" src="assets/images/Marker_Baecker_64x64.png">'         +'Bäcker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +'<br>'+
@@ -49,9 +63,10 @@ export class HomePage {
               '<img alt="Caffee" src="assets/images/Marker_Caffee_64x64.png">'          +'Cafés&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +'<br>'+
               '<img alt="Restaurant" src="assets/images/Marker_Restaurant_64x64.png">'  +'Restaurants' +'<br>'+
           '<br><br>'+
-          'Mit dieser App unterstützt du deine Lieblingsläden in der Nähe und kannst Freunde online zu einem Lokalbesuch einladen.<br>' +
+          'Mit dieser App unterstützt du deine Lieblingsläden in der Nähe und kannst Freunde online zu einem Lokalbesuch einladen.<br>'+
           'Wir erheben keine Gebühren, sodass dein Beitrag vollständig bei den Ladenbesitzern ankommt (ggfs. abzüglich PayPal Gebühren).',
-      buttons: ['Finde ich super!']
+      buttons:[{text:'Finde ich super!',
+        handler: () => this.userDataService.saveViewedAlert(true)}]
     });
     await alert.present();
   }

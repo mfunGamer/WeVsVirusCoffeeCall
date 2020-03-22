@@ -28,6 +28,15 @@ export class UserDataService {
 
     getProfilePictureURL(): Promise<string> {
         return this.storage.get('profilePictureURL');
+
+    }
+
+    saveViewedAlert(viewed: boolean) {
+        this.storage.set('viewed', true)
+    }
+
+    getViewedAlert(): Promise<boolean> {
+        return this.storage.get('viewed');
     }
 
 }
