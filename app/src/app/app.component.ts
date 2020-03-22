@@ -4,6 +4,7 @@ import {MenuController, Platform} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {Router} from '@angular/router';
+import { UserDataService} from "./services/UserDataService";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
-    private menu: MenuController
+    private menu: MenuController,
+    public udService: UserDataService
   ) {
 
       this.sideMenu();
@@ -67,6 +69,18 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+
+
+        this.udService.getUserName().then((val)=>{
+            if(val == null || val.length == 0){
+               this.router.navigateByUrl('/create-account');
+            } else {
+               this.router.navigateByUrl('/');
+        }
+        });
+
+
+
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

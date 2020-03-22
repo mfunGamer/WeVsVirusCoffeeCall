@@ -37,5 +37,4 @@ export class CreateAccountPage implements OnInit {
 
   }
 
-
 }
