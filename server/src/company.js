@@ -88,7 +88,7 @@ async function createCompanyHandler(req,res){
                 company_type,
                 owner,
                 location) 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, ST_SetSRID(ST_Point($13, $14), 4326)::geography) 
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13 ST_SetSRID(ST_Point($14, $15), 4326)::geography) 
             RETURNING id`, 
             [bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city, bd.type, bd.owner, lon, lat]);
         //Then add all items to the company
