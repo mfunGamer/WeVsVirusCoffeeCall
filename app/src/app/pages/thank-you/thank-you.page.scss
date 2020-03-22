@@ -1,0 +1,42 @@
+ion-content, ion-item, ion-item-divider, ion-list, ion-title {
+  --background: var(--color_ice);
+  --color: var(--color_cherry)
+}
+ion-button {
+  --background: var(--color_cherry);
+  --padding-end: 10px;
+
+}
+
+ion-row {
+  text-align: center;
+}
+
+ion-toolbar {
+  --background: var(--color_petrol);
+}
+
+#text1, #text2, ion-header {
+  text-align: center;
+}
+
+#text1 {
+  font-size: 35pt;
+}
+
+#pic {
+  width: auto;
+  height: auto;
+}
+
+#warenkorb {
+  text-align: right;
+}
+
+#menu_text{
+  font-size: 14pt;
+}
+
+.avatar{
+  margin: auto;
+}

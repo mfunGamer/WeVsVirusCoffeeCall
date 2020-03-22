@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserDataService} from '../../services/UserDataService';
-import { ModalController} from '@ionic/angular';
+import {IonRouterOutlet, MenuController, ModalController} from '@ionic/angular';
 import {DataProtectionModalPage} from "../../modals/data-protection-modal/data-protection-modal.page";
-import {DataProtectionPage} from "../data-protection/data-protection.page";
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -12,21 +11,40 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./create-account.page.scss'],
 
 })
-export class CreateAccountPage {
+export class CreateAccountPage{
 
     datenschutz = false;
     username = '';
-
     fileUrl;
-
+    swipeEnabled = false;
 
   constructor(
       public udService: UserDataService,
       private router: Router,
       private modalController: ModalController,
-      public alertController: AlertController
+      public alertController: AlertController,
+      private routerOutlet: IonRouterOutlet,
+      private menu: MenuController
   ) {
   }
+
+    ionViewDidEnter() {
+        this.routerOutlet.swipeGesture = this.swipeEnabled;
+        this.menu.swipeGesture( this.swipeEnabled);
+
+    }
+    /** Stop hardware back button GLOBAL!!! */
+    @HostListener('document:ionBackButton', ['$event'])
+    overrideHardwareBackAction(event: any) {
+        if(!this.swipeEnabled){
+            console.log('back button');
+            event.detail.register(100, async () => {
+            event.stopImmediatePropagation();
+            event.stopPropagation();
+            event.preventDefault();
+            });
+        }
+    }
 
     isButtonEnabled() {
         // tslint:disable-next-line:triple-equals
@@ -40,7 +58,8 @@ export class CreateAccountPage {
     weiterPressed() {
         console.log('weiterButtonPressed!');
         this.udService.saveUserName(this.username);
-
+        this.swipeEnabled = true;
+        this.menu.swipeGesture( true);
         this.router.navigateByUrl('/home');
     }
 
