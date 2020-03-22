@@ -81,58 +81,55 @@ export class CompanyInfoPage implements OnInit {
   async checkOrder() {
     if (this.added_articles.length < 1) {
       console.log("Error not enough items.");
-      if (this.added_articles.length < 1) {
-        alert("STOP RIGHT THERE CRIMINAL. U HAVE NO ITEMS!")
-      } else {
-        /*do some stuff here (change to payment popup)*/
-        console.log("GOTO Payment Method");
-        let tmp_arr = [];
-        for (let k = 0; k < this.added_articles.length; k++) {
-          tmp_arr.push("(" + this.added_articles[k].getItemName() + ", " + this.added_articles[k].getItemValue().toFixed(2) + "€)")
-        }
-        console.log(tmp_arr);
-        const actionSheet = await this.actionSheetController.create({
-          header: 'Zahlungsmethode wählen',
-          buttons: [{
-            text: 'PayPal',
-            handler: () => {
-              this.payPal.init({
-                PayPalEnvironmentProduction: '',
-                PayPalEnvironmentSandbox: 'ATrKos7gH-abX4fJ5CmkrByTvT9bxIYNBdsKNfceJ06_9nKvIvwm8cPPB6dzUBrjknAkFnbxhWLi8vgi'
-              }).then(() => {
-                this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
-                  acceptCreditCards: false,
-                  languageOrLocale: 'de-de',
-                  merchantName: 'WeLoveLocal',
-                  merchantPrivacyPolicyURL: '',
-                  merchantUserAgreementURL: ''
-                })).then(() => {
-                  const payment = new PayPalPayment(this.total_sum_2_string, 'EUR', this.companyInformations.getCompanyName(), 'Sale');
-                  payment.payeeEmail = 'sb-pksp61235045@personal.example.com';
-                  this.payPal.renderSinglePaymentUI(payment).then(() => {
-                    console.log('Payment successful');
-                    this.router.navigateByUrl('/thank-you');
-                  }, () => {
-                    console.log('Render error');
-                  });
+    } else {
+      /*do some stuff here (change to payment popup)*/
+      console.log("GOTO Payment Method");
+      let tmp_arr = [];
+      for (let k = 0; k < this.added_articles.length; k++) {
+        tmp_arr.push("(" + this.added_articles[k].getItemName() + ", " + this.added_articles[k].getItemValue().toFixed(2) + "€)")
+      }
+      console.log(tmp_arr);
+      const actionSheet = await this.actionSheetController.create({
+        header: 'Zahlungsmethode wählen',
+        buttons: [{
+          text: 'PayPal',
+          handler: () => {
+            this.payPal.init({
+              PayPalEnvironmentProduction: '',
+              PayPalEnvironmentSandbox: 'ATrKos7gH-abX4fJ5CmkrByTvT9bxIYNBdsKNfceJ06_9nKvIvwm8cPPB6dzUBrjknAkFnbxhWLi8vgi'
+            }).then(() => {
+              this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+                acceptCreditCards: false,
+                languageOrLocale: 'de-de',
+                merchantName: 'WeLoveLocal',
+                merchantPrivacyPolicyURL: '',
+                merchantUserAgreementURL: ''
+              })).then(() => {
+                const payment = new PayPalPayment(this.total_sum_2_string, 'EUR', this.companyInformations.getCompanyName(), 'Sale');
+                payment.payeeEmail = 'sb-pksp61235045@personal.example.com';
+                this.payPal.renderSinglePaymentUI(payment).then(() => {
+                  console.log('Payment successful');
+                  this.router.navigateByUrl('/thank-you');
                 }, () => {
-
+                  console.log('Render error');
                 });
               }, () => {
 
               });
-            }
-          }, {
-            text: 'Abbrechen',
-            icon: 'close',
-            role: 'cancel',
-            handler: () => {
-              console.log('Cancel clicked');
-            }
-          }]
-        });
-        await actionSheet.present();
-      }
+            }, () => {
+
+            });
+          }
+        }, {
+          text: 'Abbrechen',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }]
+      });
+      await actionSheet.present();
     }
   }
 
