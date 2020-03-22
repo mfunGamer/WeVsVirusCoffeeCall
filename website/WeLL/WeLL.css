@@ -32,38 +32,68 @@ input[type=checkbox]
     display:none;
 }
      
-input[id=item0] + label
+    input[id=item0] + label
 {
-    background-image: url("../img/bg-hero.jpg");
+    background-image: url("img/items/item-icon-01.png");
     height: 24px;
     width: 24px;
     display:inline-block;
     padding: 0 0 0 0px;
+    border: thin;
+    border-color: var(--box-bg-color);
 }
 
     input[id=item0]:checked + label
 {
-    background: #0080FF;
+    background-image: url("img/items/item-icon-01.png");
     height: 24px;
     width: 24px;
     display:inline-block;
     padding: 0 0 0 0px;
+    border: thin;
+    border-color: var(--box-bg-color);
 }
 
-input[id=item1] + label
+    input[id=item1] + label
 {
-    background-image: url("../img/bg-form.jpg");
+    background-image: url("img/items/item-icon-02.png");
     height: 24px;
     width: 24px;
     display:inline-block;
     padding: 0 0 0 0px;
+    border: thin;
+    border-color: var(--box-bg-color);
 }
 
-input[id=item1]:checked + label
+    input[id=item1]:checked + label
 {
-    background: #0080FF;
+    background-image: url("../img/items/item-icon-02.png");
     height: 24px;
     width: 24px;
     display:inline-block;
     padding: 0 0 0 0px;
+    border: thin;
+    border-color: var(--box-bg-color);
+}
+
+    input[id=item2] + label
+{
+    background-image: url("img/items/item-icon-03.png");
+    height: 24px;
+    width: 24px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+    border: thin;
+    border-color: var(--box-bg-color);
+}
+
+    input[id=item2]:checked + label
+{
+    background-image: url("img/items/item-icon-03.png");
+    height: 24px;
+    width: 24px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+    border: thin;
+    border-color: var(--box-bg-color);
 }

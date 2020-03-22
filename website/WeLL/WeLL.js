@@ -1,12 +1,15 @@
-var toggleCheckBox = function()
+var toggleCheckBox = function ()
 {
     elem = document.getElementById("checkBox");
-    if(elem.style.display === "none"){
+    if (elem.style.display === "none")
+    {
         elem.style.display = "block"
-    }else{
+
+    } else {
         elem.style.display = "none"
     }
 }
+
 
 var getItems = function ()
 {
