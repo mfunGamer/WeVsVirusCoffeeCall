@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CreateAccountPageRoutingModule } from './create-account-routing.module';
 
 import { CreateAccountPage } from './create-account.page';
+import {DataProtectionModalPage} from "../../modals/data-protection-modal/data-protection-modal.page";
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { CreateAccountPage } from './create-account.page';
     IonicModule,
     CreateAccountPageRoutingModule
   ],
-  declarations: [CreateAccountPage]
+  declarations: [CreateAccountPage, DataProtectionModalPage],
+    entryComponents: [DataProtectionModalPage]
 })
 export class CreateAccountPageModule {}
