@@ -63,6 +63,11 @@ export class AppComponent {
                   url   : "settings",
                   icon  : "settings-outline"
               },
+              {
+                  title : "Danke",
+                  url   : "thank-you",
+                  icon  : "settings-outline"
+              },
           ];
   }
 
