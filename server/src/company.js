@@ -14,7 +14,7 @@ async function getCompanyHandler(req, res, next){
             res.send("400 Bad Request: Missing parameter " + missingParam + ".");
             return;
         }
-        company = await db.oneOrNone(`SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg, owner, company_type FROM company WHERE id = $1`,req.query.id);
+        company = await db.oneOrNone(`SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg, owner, company_type FROM company WHERE id = $1 AND approved == TRUE`,req.query.id);
         items = await db.manyOrNone(`SELECT name, icon_url, price, id FROM item JOIN company_offers_item ON item.id = company_offers_item.item_id WHERE company_id = $1`, req.query.id);
 
         company.items = items;
@@ -126,7 +126,7 @@ async function getCompanyListHandler(req,res){
                 owner,
                 company_type
             FROM company
-            WHERE ST_DWithin(location, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography, $3)`,
+            WHERE approved == TRUE AND ST_DWithin(location, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography, $3)`,
             [req.query.lon, req.query.lat, req.query.radius]);
         //Then get all corresponding items
         //Create a promise with a db query for every company
