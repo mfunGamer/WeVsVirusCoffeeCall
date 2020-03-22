@@ -58,11 +58,6 @@ export class AppComponent {
                   url   : "data-protection",
                   icon  : "shield-checkmark-outline"
               },
-              {
-                  title : "Settings",
-                  url   : "settings",
-                  icon  : "settings-outline"
-              },
           ];
   }
 
