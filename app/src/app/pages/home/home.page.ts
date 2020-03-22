@@ -89,7 +89,8 @@ export class HomePage {
       params = params.set('radius', '30000');
 
       this.http.get('http://137.74.140.50:3000/companylist', {headers, params}).subscribe(items => {
-        for(const key in items) {
+        // tslint:disable-next-line:forin
+        for (const key in items) {
 
           const item: string = items[key];
 
@@ -97,10 +98,13 @@ export class HomePage {
 
           let markerVar;
 
+          // tslint:disable-next-line:triple-equals
           if ((item as any).company_type == 1) {
             markerVar = marker([(item as any).lat, (item as any).lon], {icon: restMarker});
+            // tslint:disable-next-line:triple-equals
           } else if ((item as any).company_type == 2) {
             markerVar = marker([(item as any).lat, (item as any).lon], {icon: baeckerMarker});
+            // tslint:disable-next-line:triple-equals
           } else if ((item as any).company_type == 3) {
             markerVar = marker([(item as any).lat, (item as any).lon], {icon: barMarker});
           } else {
