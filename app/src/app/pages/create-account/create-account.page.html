@@ -2,7 +2,7 @@
 
   <ion-grid style="height: 100%; background: var(--color_ice); color: var(--color_cherry)">
 
-    <ion-row class="ion-align-items-end" style="height: 40%">
+    <ion-row class="ion-align-items-end" style="height: 20%">
       <!-- Text -->
       <ion-col></ion-col>
       <ion-col class="ion-justify-content-center" size="10" style="text-align: center">
@@ -29,11 +29,20 @@
       <ion-col></ion-col>
     </ion-row>
 
+    <ion-row style="height: 20%">
+      <ion-col></ion-col>
+      <ion-col class="ion-align-items-center" style="height: 100%; text-align: center" size="10" >
+        <img *ngIf="!fileUrl" src="assets/images/char1.png" height="100%"/>
+        <img *ngIf="fileUrl" src="{{fileUrl}}"/>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
     <ion-row style="height: 10%">
       <!-- Picture upload -->
       <ion-col></ion-col>
       <ion-col class="ion-justify-content-center" style="text-align: center">
-    <ion-button style="text-align: center; --background: var(--color_petrol); color: var(--color_cherry)">Bild hochladen</ion-button>
+    <ion-button style="text-align: center; --background: var(--color_petrol); color: var(--color_cherry)" (click)="updateImage()">Bild hochladen</ion-button>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>

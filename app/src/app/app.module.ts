@@ -24,8 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {UserDataService} from './services/UserDataService';
 import {IonicStorageModule} from '@ionic/storage';
-import {PaymentPage} from './pages/payment/payment.page';
-import {PaymentPageModule} from './pages/payment/payment.module';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,8 +34,7 @@ import {PaymentPageModule} from './pages/payment/payment.module';
       RewardHistoryPage,
       LegalNoticePage,
       DataProtectionPage,
-      CreateAccountPage,
-      PaymentPage
+      CreateAccountPage
 
   ],
 
@@ -52,7 +50,6 @@ import {PaymentPageModule} from './pages/payment/payment.module';
       CreateAccountPageModule,
       IonicStorageModule.forRoot(),
       HttpClientModule,
-      PaymentPageModule
   ],
 
   providers: [
@@ -60,6 +57,7 @@ import {PaymentPageModule} from './pages/payment/payment.module';
       StatusBar,
       UserDataService,
       SplashScreen,
+      SocialSharing,
       { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
