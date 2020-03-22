@@ -12,9 +12,11 @@ export class CreateAccountPage {
   datenschutz = false;
   username = '';
 
+  fileUrl;
+
   constructor(
       public udService: UserDataService,
-      private router: Router
+      private router: Router,
   ) { }
 
   isButtonEnabled() {
@@ -32,6 +34,10 @@ export class CreateAccountPage {
 
     this.udService.saveUserName(this.username);
 
+  }
+
+  updateImage() {
+    // ToDo open photo library select 1 photo and save returned uri in 'fileUrl'
   }
 
 
