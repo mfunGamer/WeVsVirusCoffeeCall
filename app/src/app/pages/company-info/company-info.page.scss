@@ -12,8 +12,27 @@ ion-row {
   text-align: center;
 }
 
+ion-grid {
+  text-align: center;
+}
+
 ion-toolbar {
   --background: var(--color_petrol);
+}
+
+#thumbn {
+  width: 20vw;
+  height: 20vw;
+}
+
+.add_button {
+  width: 100%;
+  height: 50px;
+}
+
+.product_name {
+  font-size: 5vw;
+  font-weight: bold;
 }
 
 #text1, #text2, ion-header {
@@ -25,8 +44,8 @@ ion-toolbar {
 }
 
 #pic {
-  width: auto;
-  height: auto;
+  width: 110vw;
+  height: 110vw;
 }
 
 #warenkorb {
