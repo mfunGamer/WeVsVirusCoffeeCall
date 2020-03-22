@@ -7,7 +7,7 @@ import {UserDataService} from '../../services/UserDataService';
   templateUrl: './create-account.page.html',
   styleUrls: ['./create-account.page.scss'],
 })
-export class CreateAccountPage implements OnInit {
+export class CreateAccountPage {
 
   datenschutz = false;
   username = '';
@@ -16,9 +16,6 @@ export class CreateAccountPage implements OnInit {
       public udService: UserDataService,
       private router: Router
   ) { }
-
-  ngOnInit() {
-  }
 
   isButtonEnabled() {
     // tslint:disable-next-line:triple-equals
