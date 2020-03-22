@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {UserDataService} from '../../services/UserDataService';
 import { ModalController} from '@ionic/angular';
@@ -20,13 +20,13 @@ export class CreateAccountPage {
     fileUrl;
 
 
-    constructor(
-        public udService: UserDataService,
-        private router: Router,
-        public alertController: AlertController,
-        private modalController: ModalController
-    ) {
-    }
+  constructor(
+      public udService: UserDataService,
+      private router: Router,
+      private modalController: ModalController,
+      public alertController: AlertController
+  ) {
+  }
 
     isButtonEnabled() {
         // tslint:disable-next-line:triple-equals
