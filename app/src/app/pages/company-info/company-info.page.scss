@@ -55,3 +55,14 @@ ion-toolbar {
 #menu_text{
   font-size: 14pt;
 }
+
+#infoMessage, #loc, #cont{
+  text-align: center;
+  font-size: 15pt;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#detail {
+  padding-top: 15px;
+}

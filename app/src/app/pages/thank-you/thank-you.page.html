@@ -11,12 +11,14 @@
         <img id="pic" align="center" src="{{companyImage}}" alt="Kein Bild vorhanden.">
       </ion-col>
     </ion-row>
+
     <ion-row>
       <ion-col><h4 id="text2">Du hast {{amount}}€ an {{companyName}} gespendet.</h4></ion-col>
     </ion-row>
     <ion-row>
       <ion-col><h4 id="text">{{companyTy}}</h4></ion-col>
     </ion-row>
+
     <ion-row style="height: 30%">
       <ion-col class="ion-align-items-center" style="height: 100%; text-align: center">
         <ion-avatar class="avatar" style="height: 200px; width: 200px; background: var(--color_petrol)">
@@ -24,5 +26,14 @@
         </ion-avatar>
       </ion-col>
     </ion-row>
+
   </ion-grid>
+
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="full" (click)="share()"><ion-icon name="share-social-outline"></ion-icon>Teilen</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -67,6 +67,8 @@ export class HomePage {
           'Wir erheben keine Gebühren, sodass dein Beitrag vollständig bei den Ladenbesitzern ankommt (ggfs. abzüglich PayPal Gebühren).',
       buttons:[{text:'Finde ich super!',
         handler: () => this.userDataService.saveViewedAlert(true)}]
+      buttons: ['Finde ich super!'],
+      cssClass: 'alerts'
     });
     await alert.present();
   }
