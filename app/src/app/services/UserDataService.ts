@@ -11,18 +11,21 @@ export class UserDataService {
     }
 
     saveUserName(username: string) {
-        console.log(username);
-    }
-
-    getUserName(): string {
-        return null;
-    }
-
-    saveProfilePicturePath(path: string) {
+        this.storage.set('username','username');
 
     }
 
-    getProfilePicturePath(): string {
+    getUserName(): Promise<String> {
+        return this.storage.get('username');
+
+
+    }
+
+    saveProfilePictureURL(url: string) {
+
+    }
+
+    getProfilePictureURL(): string {
         return null;
     }
 
