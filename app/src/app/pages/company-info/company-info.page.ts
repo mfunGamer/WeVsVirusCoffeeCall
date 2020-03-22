@@ -25,7 +25,7 @@ export class CompanyInfoPage implements OnInit {
 
   public infoMessage = "Hinweis: Der Einkauf untenstehender Waren erfolgt virtuell. " +
       "Jeder Betrag ihres Einkaufs wird an ihr augewähltes Lokal gespendet. " +
-      "Sie unterstzützen damit, ihr Restaurant in der aktuellen Situatuiion :)";
+      "Sie unterstzützen damit, ihr Restaurant in der aktuellen Situation! :)";
 
   public total_sum: number = null;
   public total_sum_2_string: string;
@@ -174,6 +174,8 @@ export class CompanyInfoPage implements OnInit {
             if (item["items"] == undefined) {
               tmp.push([["Kein Produkt", "http://www.etikettenwissen.de/images/b/b4/P001_Verbotszeichen_ISO7010.png", "0", 123],
 
+                /* funny stuff here */
+
                   ["Kaffee","https://www.gesundheit.de/sites/default/files/styles/crop_content/public/2004-08/kaffee-wirkt.jpg?itok=oFFU4Uiz", "2.1", 2, 10],
                   ["Radler","https://cdn02.plentymarkets.com/q7p0kwea05gv/item/images/3678/full/20109-1.png", "200", 3, 10],
                   ["Fanta","https://images-na.ssl-images-amazon.com/images/I/71y12uT-UuL._SL1500_.jpg", "5.3", 4, 10],
@@ -189,7 +191,7 @@ export class CompanyInfoPage implements OnInit {
               /* change here how to parse items of retaurant */
               tmp.push([this.itemList(item[this.infoTags[i]]),
 
-                /* funny stuff here */
+                /* funny stuff there */
 
                 ["Kaffee","https://www.gesundheit.de/sites/default/files/styles/crop_content/public/2004-08/kaffee-wirkt.jpg?itok=oFFU4Uiz", "2.1", 2, 10],
                 ["Radler","https://cdn02.plentymarkets.com/q7p0kwea05gv/item/images/3678/full/20109-1.png", "200", 3, 10],
@@ -216,22 +218,7 @@ export class CompanyInfoPage implements OnInit {
 
       this.companyInformations = new CompanyDetails(tmp);
 
-      this.companyInformations.setCompanyLocation('Irgendeine Str. 0, 12345 WunderOrt');
-
       this.companyInformations.setCompanyItems(tmp2);
-
-      /*
-      this.companyInformations.setCompanyItems([
-        [0, "Kaffee", "some icon", 1.00],
-        [1, "Limo", "some icon", 2.20],
-        [2, "Cocktail", "some icon", 3.20],
-        [3, "Bier", "some icon", 5.50],
-        [4, "Bubble Tea", "some icon", 2.00],
-        [5, "Radler", "some icon", 200.00],
-        [6, "Stilles Wasser", "some icon", 0.50],
-        [7, "Capri-Sun", "some icon", 6.99]
-      ]);
-      */
 
       for (let i = 0; i < this.companyInformations.getCompanyItems().length; i++) {
         let item = this.companyInformations.getCompanyItems()[i];
