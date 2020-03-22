@@ -14,7 +14,7 @@ async function getCompanyHandler(req, res, next){
             res.send("400 Bad Request: Missing parameter " + missingParam + ".");
             return;
         }
-        company = await db.oneOrNone(`SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg, owner, company_type FROM company WHERE id = $1 AND approved = TRUE`,req.query.id);
+        company = await db.oneOrNone(`SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg, owner, company_type, lat, lon FROM company WHERE id = $1 AND approved = TRUE`,req.query.id);
         items = await db.manyOrNone(`SELECT name, icon_url, price, id FROM item JOIN company_offers_item ON item.id = company_offers_item.item_id WHERE company_id = $1`, req.query.id);
 
         company.items = items;
@@ -87,8 +87,10 @@ async function createCompanyHandler(req,res){
                 city,
                 company_type,
                 owner,
+                lon,
+                lat,
                 location) 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, ST_SetSRID(ST_Point($14, $15), 4326)::geography) 
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, ST_SetSRID(ST_Point($14, $15), 4326)::geography) 
             RETURNING id`, 
             [bd.name, bd.email, bd.description, bd.reason, bd.imgurl, bd.paypal, bd.thankyou, bd.street, bd.streetno, bd.zipcode, bd.city, bd.type, bd.owner, lon, lat]);
         //Then add all items to the company
@@ -124,7 +126,9 @@ async function getCompanyListHandler(req,res){
                 paypal,
                 thank_you_msg,
                 owner,
-                company_type
+                company_type,
+                lat,
+                lon
             FROM company
             WHERE approved = TRUE AND ST_DWithin(location, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography, $3)`,
             [req.query.lon, req.query.lat, req.query.radius]);
