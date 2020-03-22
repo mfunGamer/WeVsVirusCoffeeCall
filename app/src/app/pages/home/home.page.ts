@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import {MenuController, Platform} from '@ionic/angular';
-import { Router } from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import { Map, tileLayer, marker, icon } from 'leaflet';
-import { map } from 'rxjs/operators';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 
 @Component({
@@ -24,7 +23,12 @@ export class HomePage {
   ionViewDidEnter() {
     this.menu.swipeGesture(false);
     this.menu.close();
+
+    // tslint:disable-next-line:max-line-length
+    // this.http.get('http://137.74.140.50:3000/items', {headers}).forEach(item => console.log(item));
+
     this.initMap();
+
   }
 
   ionViewWillLeave() {
@@ -35,19 +39,11 @@ export class HomePage {
     this.menu.open();
   }
 
-  // tslint:disable-next-line:use-lifecycle-interface
-  ngAfterViewInit() {
-
-    this.plt.ready().then(() => {
-      this.http.get('https://oghuxxw1e6.execute-api.us-east-1.amazonaws.com/dev')
-          .pipe(map(res => res))
-          .subscribe(restaurants => console.log(restaurants));
-    });
-  }
-
   initMap() {
 
     this.geolocation.getCurrentPosition().then((result) => {
+
+      console.log('lat: ' + result.coords.latitude + ', lng: ' + result.coords.longitude);
 
       const mapConst = new Map('map').setView([result.coords.latitude, result.coords.longitude], 23);
 
@@ -55,22 +51,81 @@ export class HomePage {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(mapConst);
 
-      const customMarkerIcon = icon({
-        iconUrl: 'assets/images/marker.png-1.png',
-        iconSize: [30, 50],
-        popupAnchor: [0, -20]
+      const restMarker = icon({
+        iconUrl: 'assets/images/Marker_Restaurant.png',
+        iconSize: [60, 80],
+        iconAnchor: [0, +80],
+        popupAnchor: [+30, -70]
       });
 
-      const restaurants = [{id: 3, lat: result.coords.latitude, lng: result.coords.longitude}];
-
-      restaurants.forEach((restaurant) => {
-        marker([restaurant.lat, restaurant.lng], {icon: customMarkerIcon})
-            .bindPopup(`<b>${restaurant.id}</b>`, { autoClose: false })
-            .on('click', () => this.router.navigateByUrl('/restaurant'))
-            .addTo(mapConst);
+      const baeckerMarker = icon({
+        iconUrl: 'assets/images/Marker_Baecker.png',
+        iconSize: [60, 80],
+        iconAnchor: [0, +80],
+        popupAnchor: [+30, -70]
       });
 
-      setTimeout(() => { mapConst.invalidateSize(); } , 500);
+      const barMarker = icon({
+        iconUrl: 'assets/images/Marker_Bar.png',
+        iconSize: [60, 80],
+        iconAnchor: [0, +80],
+        popupAnchor: [+30, -70]
+      });
+
+      const caffeeMarker = icon({
+        iconUrl: 'assets/images/Marker_Caffee.png',
+        iconSize: [60, 80],
+        iconAnchor: [0, +80],
+        popupAnchor: [+30, -70]
+      });
+
+      let headers = new HttpHeaders();
+      headers = headers.set('Access-Control-Allow-Origin' , 'http://137.74.140.50:3000');
+      headers = headers.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+
+      let params = new HttpParams();
+      params = params.set('lat', String(result.coords.latitude));
+      params = params.set('lon', String(result.coords.longitude));
+      params = params.set('radius', '30000');
+
+      this.http.get('http://137.74.140.50:3000/companylist', {headers, params}).subscribe(items => {
+        // tslint:disable-next-line:forin
+        for (const key in items) {
+
+          const item: string = items[key];
+
+          console.log(item);
+
+          let markerVar;
+
+          // tslint:disable-next-line:triple-equals
+          if ((item as any).company_type == 1) {
+            markerVar = marker([(item as any).lat, (item as any).lon], {icon: restMarker});
+            // tslint:disable-next-line:triple-equals
+          } else if ((item as any).company_type == 2) {
+            markerVar = marker([(item as any).lat, (item as any).lon], {icon: baeckerMarker});
+            // tslint:disable-next-line:triple-equals
+          } else if ((item as any).company_type == 3) {
+            markerVar = marker([(item as any).lat, (item as any).lon], {icon: barMarker});
+          } else {
+            markerVar = marker([(item as any).lat, (item as any).lon], {icon: caffeeMarker});
+          }
+
+          const navigationExtras: NavigationExtras = {state: {
+              company: item
+            }};
+
+          markerVar
+              .on('click', () => this.router.navigateByUrl('/company-info', navigationExtras))
+              .addTo(mapConst);
+
+          //bindPopup(`<b>${(item as any).name}</b>`, {autoClose: false})
+
+        }
+
+        setTimeout(() => { mapConst.invalidateSize(); } , 500);
+
+      });
 
     }).catch((errorMessage) => {
       console.log('An Error occured', errorMessage);
