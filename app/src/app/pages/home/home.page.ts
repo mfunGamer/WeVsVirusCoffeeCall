@@ -39,6 +39,10 @@ export class HomePage {
     this.menu.open();
   }
 
+  onOpenInfo() {
+
+  }
+
   initMap() {
 
     this.geolocation.getCurrentPosition().then((result) => {
@@ -86,7 +90,7 @@ export class HomePage {
       let params = new HttpParams();
       params = params.set('lat', String(result.coords.latitude));
       params = params.set('lon', String(result.coords.longitude));
-      params = params.set('radius', '30000');
+      params = params.set('radius', '300000');
 
       this.http.get('http://137.74.140.50:3000/companylist', {headers, params}).subscribe(items => {
         // tslint:disable-next-line:forin
