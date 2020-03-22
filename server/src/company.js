@@ -17,7 +17,7 @@ async function getCompanyHandler(req, res, next){
         company = await db.oneOrNone(`SELECT id, name, email, description, reason, img_url, paypal, thank_you_msg, owner, company_type, lat, lon FROM company WHERE id = $1 AND approved = TRUE`,req.query.id);
         items = await db.manyOrNone(`SELECT name, icon_url, price, id FROM item JOIN company_offers_item ON item.id = company_offers_item.item_id WHERE company_id = $1`, req.query.id);
 
-        if(company == undefined || company == null){
+        if(!company){
             res.status(400);
             res.send("Couldnt find company. Maybe it has not been approved yet.");
             return;
@@ -73,7 +73,13 @@ async function createCompanyHandler(req,res){
             },  
             json: true
         });
-        //Need to implement error handling for empty response or timeout
+        
+        if (!locInformation){
+            res.status(400);
+            res.send("The addres you provided could not be found.");
+            return;
+        }
+
         let lat = locInformation[0].lat;
         let lon = locInformation[0].lon;
 
