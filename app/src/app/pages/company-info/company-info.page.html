@@ -59,7 +59,7 @@
   <!-- List of Text Items -->
   <ion-item *ngFor="let iter of all_articles">
     <ion-col>
-      <img id="thumbn" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      <img id="thumbn" src="{{iter.getItemIcon()}}">
     </ion-col>
 
     <ion-col align="left">

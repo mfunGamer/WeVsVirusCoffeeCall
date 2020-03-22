@@ -25,7 +25,7 @@ export class CompanyInfoPage implements OnInit {
 
   public infoMessage = "Hinweis: Der Einkauf untenstehender Waren erfolgt virtuell. " +
       "Jeder Betrag ihres Einkaufs wird an ihr augewähltes Lokal gespendet. " +
-      "Sie unterstzützen damit, ihr Restaurant in der aktuellen Situatuiion :)";
+      "Sie unterstzützen damit, ihr Restaurant in der aktuellen Situation! :)";
 
   public total_sum: number = null;
   public total_sum_2_string: string;
@@ -146,30 +146,64 @@ export class CompanyInfoPage implements OnInit {
 
 
   itemList(someItems) {
+    let gg = [];
     for (const kar in someItems) {
       const item: string = someItems[kar];
-      console.log("name: " + item["name"]);
+      gg.push(item);
+
     }
+
+    return gg;
+
   }
 
 
   someFunction(inside) {
       let tmp = [];
+      let tmp2 = [];
 
       for (const key in inside) {
         const item: string = inside[key];
 
-        console.log(item["name"]);
+        console.log(item);
 
         for (let i = 0; i < this.infoTags.length; i++) {
 
           if (this.infoTags[i] == "items") {
 
             if (item["items"] == undefined) {
-              tmp.push([0, "Kein Produkt", "Nothing", 0]);
+              tmp.push([["Kein Produkt", "http://www.etikettenwissen.de/images/b/b4/P001_Verbotszeichen_ISO7010.png", "0", 123],
+
+                /* funny stuff here */
+
+                  ["Kaffee","https://www.gesundheit.de/sites/default/files/styles/crop_content/public/2004-08/kaffee-wirkt.jpg?itok=oFFU4Uiz", "2.1", 2, 10],
+                  ["Radler","https://cdn02.plentymarkets.com/q7p0kwea05gv/item/images/3678/full/20109-1.png", "200", 3, 10],
+                  ["Fanta","https://images-na.ssl-images-amazon.com/images/I/71y12uT-UuL._SL1500_.jpg", "5.3", 4, 10],
+                  ["Sprite","https://images-na.ssl-images-amazon.com/images/I/31de1HhT7qL.jpg", "1.7", 5, 10],
+                  ["Cola","https://staude-getraenke.de/wp-content/uploads/2018/02/coca-cola-02-30900-2.jpg", "1.7", 6, 10],
+                  ["Wasser","https://images.eatsmarter.de/sites/default/files/styles/576x432/public/wasser-wissen.jpg", "1", 7, 10],
+                  ["Mehr Wasser","https://images.eatsmarter.de/sites/default/files/styles/576x432/public/wasser-wissen.jpg", "0.5", 8, 10],
+                  ["Milch","https://images.eatsmarter.de/sites/default/files/styles/576x432/public/images/milch-gut-fuer-knochen-341x256.jpg", "2.5", 9, 10],
+                  ["Orangensaft","https://www.ndr.de/fernsehen/sendungen/markt/saft146_v-contentgross.jpg", "19", 10, 10]
+              ]);
+
             } else {
-              tmp.push(item[this.infoTags[i]]);
-              this.itemList(item[this.infoTags[i]]);
+              /* change here how to parse items of retaurant */
+              tmp.push([this.itemList(item[this.infoTags[i]]),
+
+                /* funny stuff there */
+
+                ["Kaffee","https://www.gesundheit.de/sites/default/files/styles/crop_content/public/2004-08/kaffee-wirkt.jpg?itok=oFFU4Uiz", "2.1", 2, 10],
+                ["Radler","https://cdn02.plentymarkets.com/q7p0kwea05gv/item/images/3678/full/20109-1.png", "200", 3, 10],
+                ["Fanta","https://images-na.ssl-images-amazon.com/images/I/71y12uT-UuL._SL1500_.jpg", "5.3", 4, 10],
+                ["Sprite","https://images-na.ssl-images-amazon.com/images/I/31de1HhT7qL.jpg", "1.7", 5, 10],
+                ["Cola","https://staude-getraenke.de/wp-content/uploads/2018/02/coca-cola-02-30900-2.jpg", "1.7", 6, 10],
+                ["Wasser","https://images.eatsmarter.de/sites/default/files/styles/576x432/public/wasser-wissen.jpg", "1", 7, 10],
+                ["Mehr Wasser","https://images.eatsmarter.de/sites/default/files/styles/576x432/public/wasser-wissen.jpg", "0.5", 8, 10],
+                ["Milch","https://images.eatsmarter.de/sites/default/files/styles/576x432/public/images/milch-gut-fuer-knochen-341x256.jpg", "2.5", 9, 10],
+                ["Orangensaft","https://www.ndr.de/fernsehen/sendungen/markt/saft146_v-contentgross.jpg", "19", 10, 10]
+
+              ]);
 
             }
           } else {
@@ -178,27 +212,17 @@ export class CompanyInfoPage implements OnInit {
         }
       }
 
+      tmp2 = tmp[tmp.length-1];
+
       console.log(tmp);
 
       this.companyInformations = new CompanyDetails(tmp);
 
-      this.companyInformations.setCompanyLocation('Bahrenfelder Str. 170, 22765 Hamburg');
-      this.companyInformations.setCompanyContact('040 3990811, wildrice.hh@gmail.com');
-
-      this.companyInformations.setCompanyItems([
-        [0, "Kaffee", "some icon", 1.00],
-        [1, "Limo", "some icon", 2.20],
-        [2, "Cocktail", "some icon", 3.20],
-        [3, "Bier", "some icon", 5.50],
-        [4, "Bubble Tea", "some icon", 2.00],
-        [5, "Radler", "some icon", 200.00],
-        [6, "Stilles Wasser", "some icon", 0.50],
-        [7, "Capri-Sun", "some icon", 6.99]
-      ]);
+      this.companyInformations.setCompanyItems(tmp2);
 
       for (let i = 0; i < this.companyInformations.getCompanyItems().length; i++) {
         let item = this.companyInformations.getCompanyItems()[i];
-        this.all_articles.push(new Items(item[0], item[1], item[2], item[3], 0));
+        this.all_articles.push(new Items(item[3], item[0], item[1], parseFloat(item[2]), item[4]));
       }
   }
 }

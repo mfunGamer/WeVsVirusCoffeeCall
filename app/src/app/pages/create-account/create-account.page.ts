@@ -31,19 +31,7 @@ export class CreateAccountPage{
     ionViewDidEnter() {
         this.routerOutlet.swipeGesture = this.swipeEnabled;
         this.menu.swipeGesture( this.swipeEnabled);
-
-    }
-    /** Stop hardware back button GLOBAL!!! */
-    @HostListener('document:ionBackButton', ['$event'])
-    overrideHardwareBackAction(event: any) {
-        if(!this.swipeEnabled){
-            console.log('back button');
-            event.detail.register(100, async () => {
-            event.stopImmediatePropagation();
-            event.stopPropagation();
-            event.preventDefault();
-            });
-        }
+        //TODO disable hardware backbutton if !swipeenabled
     }
 
     isButtonEnabled() {
