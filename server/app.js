@@ -4,13 +4,13 @@ const bodyParser = require("body-parser");
 const database = require("./src/db.js");
 const utility = require("./src/utility.js")
 const config = require("config");
+const cors = require("cors");
 
 //Loading Config
 conf = config.get('serverConf');
 
 //Initializing ExpressJs
 const app = express();
-app.use(bodyParser.json());
 const port = conf.port;
 
 //Initialize DB
@@ -19,6 +19,9 @@ database.initDB();
 //Handlers
 const companyHandler = require("./src/company.js");
 const itemHandler = require("./src/item.js");
+
+app.use(cors());
+app.use(bodyParser.json());
 
 app.get("*", utility.validateParams);
 app.post("*", utility.validateBody);
