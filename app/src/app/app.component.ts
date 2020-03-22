@@ -63,6 +63,13 @@ export class AppComponent {
                   url   : "settings",
                   icon  : "settings-outline"
               },
+
+              {
+                  title : 'CompanyInfo',
+                  url   : 'company-info',
+                  icon  : 'close-circle-outline'
+              },
+
           ];
   }
 
