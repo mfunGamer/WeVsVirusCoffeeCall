@@ -15,6 +15,7 @@
     "config": "^3.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-limiter": "^1.6.1",
     "morgan": "^1.10.0",
     "pg-promise": "^10.4.4",
     "request": "^2.88.2",

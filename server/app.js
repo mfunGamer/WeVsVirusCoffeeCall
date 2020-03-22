@@ -40,4 +40,4 @@ app.get("/companylist", companyHandler.getList);
 //Item Endpoints
 app.get("/items", itemHandler.get);
 
-app.listen(port, () => console.log(`Running WeVsVirus Backend on port ${port}!`));
+app.listen(port, () => console.log(`Running WeLL Backend on port ${port}!`));
