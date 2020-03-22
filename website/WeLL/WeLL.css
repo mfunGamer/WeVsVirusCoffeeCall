@@ -34,7 +34,7 @@ input[type=checkbox]
      
     input[id=item0] + label
 {
-    background-image: url("img/items/item-icon-01.png");
+    background-image: url("../img/items/item-icon-01.png");
     height: 24px;
     width: 24px;
     display:inline-block;
@@ -45,7 +45,7 @@ input[type=checkbox]
 
     input[id=item0]:checked + label
 {
-    background-image: url("img/items/item-icon-01.png");
+    background-image: url("../img/items/item-icon-01.png");
     height: 24px;
     width: 24px;
     display:inline-block;
@@ -56,7 +56,7 @@ input[type=checkbox]
 
     input[id=item1] + label
 {
-    background-image: url("img/items/item-icon-02.png");
+    background-image: url("../img/items/item-icon-02.png");
     height: 24px;
     width: 24px;
     display:inline-block;
@@ -78,7 +78,7 @@ input[type=checkbox]
 
     input[id=item2] + label
 {
-    background-image: url("img/items/item-icon-03.png");
+    background-image: url("../img/items/item-icon-03.png");
     height: 24px;
     width: 24px;
     display:inline-block;
@@ -89,7 +89,7 @@ input[type=checkbox]
 
     input[id=item2]:checked + label
 {
-    background-image: url("img/items/item-icon-03.png");
+    background-image: url("../img/items/item-icon-03.png");
     height: 24px;
     width: 24px;
     display:inline-block;
