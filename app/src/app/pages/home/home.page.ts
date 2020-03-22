@@ -44,7 +44,11 @@ export class HomePage {
   async onOpenInfo() {
     const alert = await this.alertController.create({
       header: 'WeLLcome!',
-      message:
+      message:'<img alt="Bäcker" src="assets/images/Marker_Baecker_64x64.png">'+ 'Bäcker' +'<br>'+
+              '<img alt="Bar" src="assets/images/Marker_Bar_64x64.png">'+'Bars' +'<br>'+
+              '<img alt="Caffee" src="assets/images/Marker_Caffee_64x64.png">'+'Cafés' +'<br>'+
+              '<img alt="Restaurant" src="assets/images/Marker_Restaurant_64x64.png">'+'Restaurants' +'<br>'+
+          '<br><br>'+
           'Mit dieser App unterstützt du deine Lieblingsläden in der Nähe und kannst Freunde online zu einem Lokalbesuch einladen.<br>' +
           'Wir erheben keine Gebühren, sodass dein Beitrag vollständig bei den Ladenbesitzern ankommt (ggfs. abzüglich PayPal Gebühren).',
       buttons: ['Finde ich super!']
@@ -66,30 +70,30 @@ export class HomePage {
 
       const restMarker = icon({
         iconUrl: 'assets/images/Marker_Restaurant.png',
-        iconSize: [60, 80],
+        iconSize: [80, 80],
         iconAnchor: [0, +80],
-        popupAnchor: [+30, -70]
+        popupAnchor: [+40, -70]
       });
 
       const baeckerMarker = icon({
         iconUrl: 'assets/images/Marker_Baecker.png',
-        iconSize: [60, 80],
+        iconSize: [80, 80],
         iconAnchor: [0, +80],
-        popupAnchor: [+30, -70]
+        popupAnchor: [+40, -70]
       });
 
       const barMarker = icon({
         iconUrl: 'assets/images/Marker_Bar.png',
-        iconSize: [60, 80],
+        iconSize: [80, 80],
         iconAnchor: [0, +80],
-        popupAnchor: [+30, -70]
+        popupAnchor: [+40, -70]
       });
 
       const caffeeMarker = icon({
         iconUrl: 'assets/images/Marker_Caffee.png',
-        iconSize: [60, 80],
+        iconSize: [80, 80],
         iconAnchor: [0, +80],
-        popupAnchor: [+30, -70]
+        popupAnchor: [+40, -70]
       });
 
       let headers = new HttpHeaders();
