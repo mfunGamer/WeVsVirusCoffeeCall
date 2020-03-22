@@ -70,30 +70,30 @@ export class HomePage {
 
       const restMarker = icon({
         iconUrl: 'assets/images/Marker_Restaurant.png',
-        iconSize: [60, 80],
+        iconSize: [80, 80],
         iconAnchor: [0, +80],
-        popupAnchor: [+30, -70]
+        popupAnchor: [+40, -70]
       });
 
       const baeckerMarker = icon({
         iconUrl: 'assets/images/Marker_Baecker.png',
-        iconSize: [60, 80],
+        iconSize: [80, 80],
         iconAnchor: [0, +80],
-        popupAnchor: [+30, -70]
+        popupAnchor: [+40, -70]
       });
 
       const barMarker = icon({
         iconUrl: 'assets/images/Marker_Bar.png',
-        iconSize: [60, 80],
+        iconSize: [80, 80],
         iconAnchor: [0, +80],
-        popupAnchor: [+30, -70]
+        popupAnchor: [+40, -70]
       });
 
       const caffeeMarker = icon({
         iconUrl: 'assets/images/Marker_Caffee.png',
-        iconSize: [60, 80],
+        iconSize: [80, 80],
         iconAnchor: [0, +80],
-        popupAnchor: [+30, -70]
+        popupAnchor: [+40, -70]
       });
 
       let headers = new HttpHeaders();
