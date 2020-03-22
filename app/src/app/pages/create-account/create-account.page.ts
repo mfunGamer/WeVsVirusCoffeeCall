@@ -51,13 +51,19 @@ export class CreateAccountPage{
         this.router.navigateByUrl('/home');
     }
 
-    updateImage() {
-        // ToDo open photo library select 1 photo and save returned uri in 'fileUrl'
+    async updateImage() {
+        const alert = await this.alertController.create({
+            header: 'Info',
+            message: 'Das Bild kann in dieser Version der App leider noch nicht geändert werden.',
+            buttons: ['OK']
+        });
+        await alert.present();
     }
 
     async presentAlert() {
         const alert = await this.alertController.create({
             header: 'Info',
+            // tslint:disable-next-line:max-line-length
             message: 'Dein Bild und dein Name dienen dazu, dass du nach deiner Spende ein personalisiertes Bild zum Teilen erhalten kannst. <br> <br> Nur die Angabe eines Namens ist verfplichtend.',
             buttons: ['OK']
         });

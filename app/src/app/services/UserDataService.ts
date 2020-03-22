@@ -32,7 +32,7 @@ export class UserDataService {
     }
 
     saveViewedAlert(viewed: boolean) {
-        this.storage.set('viewed', true)
+        this.storage.set('viewed', true);
     }
 
     getViewedAlert(): Promise<boolean> {

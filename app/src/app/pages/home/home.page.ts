@@ -5,7 +5,7 @@ import { Map, tileLayer, marker, icon } from 'leaflet';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { AlertController } from '@ionic/angular';
-import {UserDataService} from "../../services/UserDataService";
+import {UserDataService} from '../../services/UserDataService';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +13,6 @@ import {UserDataService} from "../../services/UserDataService";
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  buttonPressed;
 
   constructor(public http: HttpClient,
               public plt: Platform,
@@ -35,15 +33,15 @@ export class HomePage {
 
     this.initMap();
     this.userDataService.getUserName().then((usernameval) => {
-      if(usernameval.length>0){
+      if (usernameval.length > 0) {
         this.userDataService.getViewedAlert().then((val) => {
-          if(!val)this.onOpenInfo()
+          if (!val) {this.onOpenInfo(); }
         }).catch(() => {
-          this.onOpenInfo()
+          this.onOpenInfo();
         });
     }
 
-  })
+  });
   }
 
   ionViewWillLeave() {
@@ -58,17 +56,19 @@ export class HomePage {
 
     const alert = await this.alertController.create({
       header: 'WeLLcome!',
-      message:'<img alt="Bäcker" src="assets/images/Marker_Baecker_64x64.png">'         +'Bäcker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +'<br>'+
-              '<img alt="Bar" src="assets/images/Marker_Bar_64x64.png">'                +'Bars&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +'<br>'+
-              '<img alt="Caffee" src="assets/images/Marker_Caffee_64x64.png">'          +'Cafés&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +'<br>'+
-              '<img alt="Restaurant" src="assets/images/Marker_Restaurant_64x64.png">'  +'Restaurants' +'<br>'+
-          '<br><br>'+
-          'Mit dieser App unterstützt du deine Lieblingsläden in der Nähe und kannst Freunde online zu einem Lokalbesuch einladen.<br>'+
+      // tslint:disable-next-line:max-line-length
+      message: '<img alt="Bäcker" src="assets/images/Marker_Baecker_64x64.png">'         + 'Bäcker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + '<br>' +
+          // tslint:disable-next-line:max-line-length
+              '<img alt="Bar" src="assets/images/Marker_Bar_64x64.png">'                + 'Bars&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + '<br>' +
+          // tslint:disable-next-line:max-line-length
+              '<img alt="Caffee" src="assets/images/Marker_Caffee_64x64.png">'          + 'Cafés&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + '<br>' +
+              '<img alt="Restaurant" src="assets/images/Marker_Restaurant_64x64.png">'  + 'Restaurants' + '<br>' +
+          '<br><br>' +
+          'Mit dieser App unterstützt du deine Lieblingsläden in der Nähe und kannst Freunde online zu einem Lokalbesuch einladen.<br>' +
           'Wir erheben keine Gebühren, sodass dein Beitrag vollständig bei den Ladenbesitzern ankommt (ggfs. abzüglich PayPal Gebühren).',
-      buttons:[{text:'Finde ich super!',
-        handler: () => this.userDataService.saveViewedAlert(true)}]
-      buttons: ['Finde ich super!'],
-      cssClass: 'alerts'
+      buttons: [{text: 'Finde ich super!',
+        handler: () => this.userDataService.saveViewedAlert(true)}],
+      // cssClass: 'alerts'
     });
     await alert.present();
   }
@@ -153,7 +153,7 @@ export class HomePage {
               .on('click', () => this.router.navigateByUrl('/company-info', navigationExtras))
               .addTo(mapConst);
 
-          //bindPopup(`<b>${(item as any).name}</b>`, {autoClose: false})
+          // bindPopup(`<b>${(item as any).name}</b>`, {autoClose: false})
 
         }
 

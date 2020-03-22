@@ -44,11 +44,6 @@ export class AppComponent {
                   icon  : 'key-outline'
               },
               {
-                  title : "RewardHistory",
-                  url   : "reward-history",
-                  icon  : "trophy-outline"
-              },
-              {
                   title : "LegalNotice",
                   url   : "legal-notice",
                   icon  : "alert-circle-outline"
