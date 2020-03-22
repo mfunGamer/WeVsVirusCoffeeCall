@@ -115,15 +115,17 @@ export class HomePage {
               company: item
             }};
 
-          markerVar.bindPopup(`<b>${(item as any).name}</b>`, {autoClose: false})
+          markerVar
               .on('click', () => this.router.navigateByUrl('/company-info', navigationExtras))
               .addTo(mapConst);
 
+          //bindPopup(`<b>${(item as any).name}</b>`, {autoClose: false})
+
         }
 
-      });
+        setTimeout(() => { mapConst.invalidateSize(); } , 500);
 
-      setTimeout(() => { mapConst.invalidateSize(); } , 500);
+      });
 
     }).catch((errorMessage) => {
       console.log('An Error occured', errorMessage);
